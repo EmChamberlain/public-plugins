@@ -433,30 +433,6 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             actionTakenThisTick = handleAutoCombat();
         }
 
-        if(!actionTakenThisTick && config.enablePrayerFlick())
-        {
-            if(!Prayers.isQuickPrayerEnabled())
-                Prayers.toggleQuickPrayer(true);
-
-            try {
-                Thread.sleep((long)((Math.random() * 100) + 50));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            if(Prayers.isQuickPrayerEnabled()) {
-                Prayers.toggleQuickPrayer(false);
-            }
-            actionTakenThisTick = true;
-
-        }
-
-        if(!actionTakenThisTick && !config.enablePrayerFlick())
-        {
-            if(Prayers.isQuickPrayerEnabled())
-                Prayers.toggleQuickPrayer(false);
-        }
-
     }
 
     public boolean isMoving()
@@ -929,7 +905,28 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
         secondaryStatus = "Idle";
         nextReactionTick = client.getTickCount() + getReaction();
-        return false;
+        if(config.enablePrayerFlick())
+        {
+            if(!Prayers.isQuickPrayerEnabled())
+                Prayers.toggleQuickPrayer(true);
+
+            try {
+                Thread.sleep((long)((Math.random() * 100) + 50));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if(Prayers.isQuickPrayerEnabled()) {
+                Prayers.toggleQuickPrayer(false);
+            }
+        }
+
+        if(!config.enablePrayerFlick())
+        {
+            if(Prayers.isQuickPrayerEnabled())
+                Prayers.toggleQuickPrayer(false);
+        }
+        return true;
     }
 
     private boolean handleAlching()
