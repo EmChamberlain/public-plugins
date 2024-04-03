@@ -837,7 +837,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         if (config.useSafespot() && !startLocation.equals(client.getLocalPlayer().getWorldLocation()) && !isMoving())
         {
             InteractionUtils.walk(startLocation);
-            nextReactionTick = client.getTickCount() + getReaction();
+            if(!config.enablePrayerFlick())
+                nextReactionTick = client.getTickCount() + getReaction();
             return false;
         }
 
@@ -867,7 +868,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             if (target != null)
             {
                 NpcUtils.interact(target, "Attack");
-                nextReactionTick = client.getTickCount() + getReaction();
+                if(!config.enablePrayerFlick())
+                    nextReactionTick = client.getTickCount() + getReaction();
                 secondaryStatus = "Attacking " + target.getName();
 
                 if (getInactiveTicks() > 2)
@@ -880,7 +882,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             else
             {
                 secondaryStatus = "Nothing to murder";
-                nextReactionTick = client.getTickCount() + getReaction();
+                if(!config.enablePrayerFlick())
+                    nextReactionTick = client.getTickCount() + getReaction();
                 return false;
             }
         }
@@ -891,7 +894,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 if (isNpcEligible(getEligibleNpcInteractingWithUs()))
                 {
                     NpcUtils.interact(getEligibleNpcInteractingWithUs(), "Attack");
-                    nextReactionTick = client.getTickCount() + getReaction();
+                    if(!config.enablePrayerFlick())
+                        nextReactionTick = client.getTickCount() + getReaction();
                     secondaryStatus = "Re-attacking " + getEligibleNpcInteractingWithUs().getName();
                 }
 
@@ -904,7 +908,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         }
 
         secondaryStatus = "Idle";
-        nextReactionTick = client.getTickCount() + getReaction();
+        if(!config.enablePrayerFlick())
+                nextReactionTick = client.getTickCount() + getReaction();
         if(config.enablePrayerFlick())
         {
             if(!Prayers.isQuickPrayerEnabled())
