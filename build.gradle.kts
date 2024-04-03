@@ -1,4 +1,5 @@
 import ProjectVersions.unethicaliteVersion
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
@@ -12,8 +13,8 @@ plugins {
     kotlin("kapt") version "1.6.21"
 }
 
-project.extra["GithubUrl"] = "https://github.com/lucid-plugins/public-plugins"
-project.extra["GithubUserName"] = "lucid-plugins"
+project.extra["GithubUrl"] = "https://github.com/EmChamberlain/public-plugins"
+project.extra["GithubUserName"] = "EmChamberlain"
 project.extra["GithubRepoName"] = "public-plugins"
 
 apply<JavaLibraryPlugin>()
@@ -23,7 +24,7 @@ apply<CheckstylePlugin>()
 allprojects {
     group = "com.lucidplugins"
 
-    project.extra["PluginProvider"] = "lucid-plugins"
+    project.extra["PluginProvider"] = "EmChamberlain"
     project.extra["ProjectSupportUrl"] = "https://discord.gg/lucid-plugs"
     project.extra["PluginLicense"] = "3-Clause BSD License"
 
@@ -70,8 +71,13 @@ allprojects {
             sourceCompatibility = "11"
         }
 
+        withType<KotlinCompile> {
+            outputs.upToDateWhen { false }
+        }
+
         withType<JavaCompile> {
             options.encoding = "UTF-8"
+            outputs.upToDateWhen { false }
         }
 
         withType<AbstractArchiveTask> {

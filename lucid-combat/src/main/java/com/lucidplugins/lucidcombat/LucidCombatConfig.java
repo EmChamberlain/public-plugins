@@ -178,31 +178,37 @@ public interface LucidCombatConfig extends Config
     @ConfigSection(name = "Prayer Upkeep", description = "Control settings for prayer upkeep", position = 3, closedByDefault = true)
     String prayerUpkeepSection = "Prayer Upkeep";
 
-    @ConfigItem(name = "Enable Prayer Restore", description = "Enables auto prayer upkeep. Auto-detects prayer restore items in inventory", position = 0, keyName = "enablePrayerRestore", section = prayerUpkeepSection)
+    @ConfigItem(name = "Enable Prayer Flicking", description = "Enables auto prayer flicking.", position = 0, keyName = "enablePrayerRestore", section = prayerUpkeepSection)
+    default boolean enablePrayerFlick()
+    {
+        return false;
+    }
+
+    @ConfigItem(name = "Enable Prayer Restore", description = "Enables auto prayer upkeep. Auto-detects prayer restore items in inventory", position = 1, keyName = "enablePrayerRestore", section = prayerUpkeepSection)
     default boolean enablePrayerRestore()
     {
         return false;
     }
 
-    @ConfigItem(name = "Prayer Points Minimum", description = "Will drink once prayer points goes below this level", position = 1, keyName = "prayerPointsMin", section = prayerUpkeepSection)
+    @ConfigItem(name = "Prayer Points Minimum", description = "Will drink once prayer points goes below this level", position = 2, keyName = "prayerPointsMin", section = prayerUpkeepSection)
     default int prayerPointsMin()
     {
         return 30;
     }
 
-    @ConfigItem(name = "Min Restore Buffer", description = "Will add this random buffer range onto the minimum prayer points needed before restore to make the restoration a bit more random", position = 2, keyName = "prayerRestoreBuffer", section = prayerUpkeepSection)
+    @ConfigItem(name = "Min Restore Buffer", description = "Will add this random buffer range onto the minimum prayer points needed before restore to make the restoration a bit more random", position = 3, keyName = "prayerRestoreBuffer", section = prayerUpkeepSection)
     default int prayerRestoreBuffer()
     {
         return 0;
     }
 
-    @ConfigItem(name = "Restore To Max", description = "When it restores, it will keep sipping until max prayer points minus the buffer amount", position = 3, keyName = "restorePrayerToMax", section = prayerUpkeepSection)
+    @ConfigItem(name = "Restore To Max", description = "When it restores, it will keep sipping until max prayer points minus the buffer amount", position = 4, keyName = "restorePrayerToMax", section = prayerUpkeepSection)
     default boolean restorePrayerToMax()
     {
         return false;
     }
 
-    @ConfigItem(name = "Max Buffer", description = "Adds a buffer to check if your Prayer is within range of max minus this amount. E.g. Your Prayer is 99 and the buffer is 5, it will consider 94+ Prayer 'max'", position = 4, keyName = "maxPrayerBuffer", section = prayerUpkeepSection)
+    @ConfigItem(name = "Max Buffer", description = "Adds a buffer to check if your Prayer is within range of max minus this amount. E.g. Your Prayer is 99 and the buffer is 5, it will consider 94+ Prayer 'max'", position = 5, keyName = "maxPrayerBuffer", section = prayerUpkeepSection)
     default int maxPrayerBuffer()
     {
         return 0;

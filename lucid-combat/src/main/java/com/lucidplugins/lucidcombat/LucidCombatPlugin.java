@@ -26,6 +26,8 @@ import java.awt.event.KeyEvent;
 import java.util.*;
 import java.util.function.Predicate;
 
+import net.unethicalite.api.widgets.Prayers;
+
 
 @Extension
 @PluginDescriptor(name = "Lucid Combat", description = "Helps with Combat related stuff", enabledByDefault = false)
@@ -429,6 +431,24 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         if (!actionTakenThisTick)
         {
             actionTakenThisTick = handleAutoCombat();
+        }
+
+        if(!actionTakenThisTick && config.enablePrayerFlick())
+        {
+            if(!Prayers.isQuickPrayerEnabled())
+                Prayers.toggleQuickPrayer(true);
+
+            try {
+                Thread.sleep((long)((Math.random() * 200) + 200));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if(Prayers.isQuickPrayerEnabled()) {
+                Prayers.toggleQuickPrayer(false);
+            }
+            actionTakenThisTick = true;
+
         }
 
     }
