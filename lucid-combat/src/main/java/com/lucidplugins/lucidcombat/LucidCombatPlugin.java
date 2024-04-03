@@ -451,6 +451,12 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
         }
 
+        if(!actionTakenThisTick && !config.enablePrayerFlick())
+        {
+            if(Prayers.isQuickPrayerEnabled())
+                Prayers.toggleQuickPrayer(false);
+        }
+
     }
 
     public boolean isMoving()
