@@ -439,7 +439,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 Prayers.toggleQuickPrayer(true);
 
             try {
-                Thread.sleep((long)((Math.random() * 200) + 200));
+                Thread.sleep((long)((Math.random() * 100) + 50));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
