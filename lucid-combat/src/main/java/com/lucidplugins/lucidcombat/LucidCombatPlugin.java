@@ -922,7 +922,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 nextReactionTick = client.getTickCount() + getReaction();
         if(config.enablePrayerFlick())
         {
-            if(!Prayers.isQuickPrayerEnabled())
+            if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
                 Prayers.toggleQuickPrayer(true);
 
             try {
@@ -931,14 +931,14 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 e.printStackTrace();
             }
 
-            if(Prayers.isQuickPrayerEnabled()) {
+            if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0) {
                 Prayers.toggleQuickPrayer(false);
             }
         }
 
         if(!config.enablePrayerFlick())
         {
-            if(Prayers.isQuickPrayerEnabled())
+            if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
                 Prayers.toggleQuickPrayer(false);
         }
         return true;
