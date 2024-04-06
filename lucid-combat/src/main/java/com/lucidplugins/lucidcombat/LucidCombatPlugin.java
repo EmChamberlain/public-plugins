@@ -920,7 +920,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         secondaryStatus = "Idle";
         if(!config.enablePrayerFlick())
                 nextReactionTick = client.getTickCount() + getReaction();
-        if(config.enablePrayerFlick())
+        if(config.enablePrayerFlick() && !isSpeccing)
         {
             if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
                 Prayers.toggleQuickPrayer(true);
@@ -936,11 +936,6 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             }
         }
 
-        if(!config.enablePrayerFlick())
-        {
-            if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
-                Prayers.toggleQuickPrayer(false);
-        }
         return true;
     }
 
