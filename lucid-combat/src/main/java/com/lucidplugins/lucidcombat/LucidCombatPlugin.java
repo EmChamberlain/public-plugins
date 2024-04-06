@@ -13,12 +13,14 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.events.NpcLootReceived;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.ItemStack;
 import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.items.GrandExchange;
 import org.pf4j.Extension;
 
 import javax.inject.Inject;
@@ -54,6 +56,9 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     @Inject
     private KeyManager keyManager;
+
+    @Inject
+    private ItemManager itemManager;
 
     @Inject
     private LucidCombatConfig config;
@@ -751,7 +756,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 return false;
             }
 
-            boolean inWhitelist = nameInLootWhiteList(composition.getName());
+            boolean inWhitelist = nameInLootWhiteList(composition.getName()) || (config.lootMinimumEnabled() && meetsMinimumLootValue(tileItem));
             boolean inBlacklist = nameInLootBlackList(composition.getName());
 
             boolean antiLureActivated = false;
@@ -807,6 +812,11 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         }
 
         return false;
+    }
+
+    private boolean meetsMinimumLootValue(TileItem item)
+    {
+        return itemManager.getItemPrice(item.getId()) >= config.lootMinimum();
     }
 
     private TileItem nearestTileItem(List<TileItem> items)

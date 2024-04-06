@@ -133,6 +133,17 @@ public interface LucidCombatConfig extends Config
         return false;
     }
 
+    @ConfigItem(name = "Loot Minimum Enabled", description = "Whether or not a  minimum value of loot is to be considered part of whitelist", position = 9, keyName = "lootMinimumEnabled", section = lootSection)
+    default boolean lootMinimumEnabled()
+    {
+        return false;
+    }
+    @ConfigItem(name = "Loot Minimum", description = "Minimum value of loot to consider part of whitelist", position = 10, keyName = "lootMinimum", section = lootSection, enabledByValue = "lootMinimumEnabled")
+    default int lootMinimum()
+    {
+        return 0;
+    }
+
     // Slayer Settings
     @ConfigSection(name = "Slayer Settings", description = "Control settings for slayer features", position = 2, closedByDefault = true)
     String slayerSection = "Slayer Settings";
