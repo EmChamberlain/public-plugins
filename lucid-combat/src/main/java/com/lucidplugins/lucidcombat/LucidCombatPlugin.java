@@ -514,6 +514,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         return false;
     }
 
+    private static boolean equippedItem = false;
+
     private boolean handleAutoSpec()
     {
         if (!config.enableAutoSpec() || config.specWeapon().isEmpty())
@@ -554,6 +556,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
             nonSpecWeaponId = -1;
             offhandWeaponID = -1;
+            equippedItem = false;
             return true;
         }
 
@@ -562,7 +565,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             return false;
         }
 
-        boolean equippedItem = false;
+
         if (!EquipmentUtils.contains(config.specWeapon()))
         {
             if (!config.specIfEquipped())
