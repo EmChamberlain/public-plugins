@@ -334,31 +334,43 @@ public interface LucidCombatConfig extends Config
         return false;
     }
 
-    @ConfigItem(name = "Spec Weapon", description = "Name of your spec weapon. Partial name matches WILL work.", position = 1, keyName = "specWeapon", section = autoSpecSection)
+    @ConfigItem(name = "Main Weapon", description = "Name of your main weapon. Partial name matches WILL work.", position = 1, keyName = "mainWeapon", section = autoSpecSection)
+    default String mainWeapon()
+    {
+        return "";
+    }
+
+    @ConfigItem(name = "Offhand", description = "Name of your offhanbd. Partial name matches WILL work.", position = 2, keyName = "offhandWeapon", section = autoSpecSection)
+    default String offhandWeapon()
+    {
+        return "";
+    }
+
+    @ConfigItem(name = "Spec Weapon", description = "Name of your spec weapon. Partial name matches WILL work.", position = 3, keyName = "specWeapon", section = autoSpecSection)
     default String specWeapon()
     {
         return "";
     }
 
-    @ConfigItem(name = "Spec % Needed", description = "How much spec % the special attack uses.", position = 2, keyName = "specNeeded", section = autoSpecSection)
+    @ConfigItem(name = "Spec % Needed", description = "How much spec % the special attack uses.", position = 4, keyName = "specNeeded", section = autoSpecSection)
     default int specNeeded()
     {
         return 0;
     }
 
-    @ConfigItem(name = "Min % Before Spec", description = "How much spec % you need before the plugin will start using the special attack.", position = 3, keyName = "minSpec", section = autoSpecSection)
+    @ConfigItem(name = "Min % Before Spec", description = "How much spec % you need before the plugin will start using the special attack.", position = 5, keyName = "minSpec", section = autoSpecSection)
     default int minSpec()
     {
         return 0;
     }
 
-    @ConfigItem(name = "Only Spec If Equipped", description = "Only toggles spec when you manually equip your spec weapon", position = 4, keyName = "specIfEquipped", section = autoSpecSection)
+    @ConfigItem(name = "Only Spec If Equipped", description = "Only toggles spec when you manually equip your spec weapon", position = 6, keyName = "specIfEquipped", section = autoSpecSection)
     default boolean specIfEquipped()
     {
         return false;
     }
 
-    @ConfigItem(name = "Only Spec If Autocombat", description = "Only specs when autocombat is running", position = 5, keyName = "specIfAutocombat", section = autoSpecSection)
+    @ConfigItem(name = "Only Spec If Autocombat", description = "Only specs when autocombat is running", position = 7, keyName = "specIfAutocombat", section = autoSpecSection)
     default boolean specIfAutocombat()
     {
         return false;

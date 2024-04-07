@@ -20,7 +20,10 @@ import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.items.Bank;
 import net.unethicalite.api.items.GrandExchange;
+import net.unethicalite.api.items.Inventory;
+import net.unethicalite.client.managers.InventoryManager;
 import org.pf4j.Extension;
 
 import javax.inject.Inject;
@@ -85,8 +88,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private int lastFinisherAttempt = 0;
 
-    private int nonSpecWeaponId = -1;
-    private int offhandWeaponID = -1;
+    //private int nonSpecWeaponId = -1;
+    //private int offhandWeaponID = -1;
 
     private boolean isSpeccing = false;
 
@@ -270,25 +273,6 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             nextHpToRestoreAt = Math.max(1, config.minHp() + (config.minHpBuffer() > 0 ? random.nextInt(config.minHpBuffer() + 1) : 0));
             nextPrayerLevelToRestoreAt = Math.max(1, config.prayerPointsMin() + (config.prayerRestoreBuffer() > 0 ? random.nextInt(config.prayerRestoreBuffer() + 1) : 0));
         });
-    }
-
-    @Subscribe
-    private void onMenuOptionClicked(MenuOptionClicked event)
-    {
-        if (config.specIfEquipped() && event.getMenuOption().equals("Wield") && (!config.specWeapon().isEmpty() && event.getMenuTarget().contains(config.specWeapon())))
-        {
-            lastTarget = client.getLocalPlayer().getInteracting();
-
-            if (EquipmentUtils.getWepSlotItem() != null)
-            {
-                nonSpecWeaponId = EquipmentUtils.getWepSlotItem().getId();
-            }
-
-            if (EquipmentUtils.getShieldSlotItem() != null)
-            {
-                offhandWeaponID = EquipmentUtils.getShieldSlotItem().getId();
-            }
-        }
     }
 
     @Subscribe
@@ -537,25 +521,25 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             isSpeccing = false;
         }
 
-        if (nonSpecWeaponId != -1 && !isSpeccing)
+        var mainHand = Inventory.getFirst(x -> x.getName().contains(config.mainWeapon()));
+        var offHand = Inventory.getFirst(x -> x.getName().contains(config.offhandWeapon()));
+        if (mainHand != null && !isSpeccing)
         {
             lastTarget = client.getLocalPlayer().getInteracting();
-            InventoryUtils.itemInteract(nonSpecWeaponId, "Wield");
+            InventoryUtils.itemInteract(mainHand.getId(), "Wield");
 
-            if (offhandWeaponID != -1)
+            if (offHand != null)
             {
-                if (InventoryUtils.itemHasAction(client, offhandWeaponID, "Wield"))
+                if (InventoryUtils.itemHasAction(client, offHand.getId(), "Wield"))
                 {
-                    InventoryUtils.itemInteract(offhandWeaponID, "Wield");
+                    InventoryUtils.itemInteract(offHand.getId(), "Wield");
                 }
-                else if (InventoryUtils.itemHasAction(client, offhandWeaponID, "Wear"))
+                else if (InventoryUtils.itemHasAction(client, offHand.getId(), "Wear"))
                 {
-                    InventoryUtils.itemInteract(offhandWeaponID, "Wear");
+                    InventoryUtils.itemInteract(offHand.getId(), "Wear");
                 }
             }
 
-            nonSpecWeaponId = -1;
-            offhandWeaponID = -1;
             equippedItem = false;
             return true;
         }
@@ -573,16 +557,6 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 Item specWeapon = InventoryUtils.getFirstItem(config.specWeapon());
                 if (specWeapon != null && canSpec())
                 {
-                    if (EquipmentUtils.getWepSlotItem() != null)
-                    {
-                        nonSpecWeaponId = EquipmentUtils.getWepSlotItem().getId();
-                    }
-
-                    if (EquipmentUtils.getShieldSlotItem() != null)
-                    {
-                        offhandWeaponID = EquipmentUtils.getShieldSlotItem().getId();
-                    }
-
                     lastTarget = client.getLocalPlayer().getInteracting();
 
                     if (lastTarget != null)
