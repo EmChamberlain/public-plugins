@@ -586,6 +586,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                     {
                         InventoryUtils.itemInteract(specWeapon.getId(), "Wield");
                         equippedItem = true;
+                        return true;
                     }
                 }
             }
