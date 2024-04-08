@@ -502,7 +502,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private boolean handleAutoSpec()
     {
-        if (!config.enableAutoSpec() || config.specWeapon().isEmpty())
+        if (!config.enableAutoSpec() || config.specWeapon().isEmpty() || !Inventory.contains(config.specWeapon(), config.mainWeapon()))
         {
             return false;
         }
