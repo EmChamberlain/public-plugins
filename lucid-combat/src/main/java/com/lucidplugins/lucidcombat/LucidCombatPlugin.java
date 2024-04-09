@@ -373,8 +373,6 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         if (config.enablePrayerFlick() && Prayers.isQuickPrayerEnabled() && isFlicking)
         {
             Prayers.toggleQuickPrayer(false);
-            isFlicking = false;
-            return;
         }
 
 
@@ -915,18 +913,28 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && !isFlicking)
             {
                 Prayers.toggleQuickPrayer(true);
+
+                try {
+                    Thread.sleep((long)((Math.random() * 50) + 25));
+                } catch (InterruptedException e) {
+                    log.info("Sleep failed in lucid combat: {}", e.toString());
+                }
+
+                Prayers.toggleQuickPrayer(false);
+
+                try {
+                    Thread.sleep((long)((Math.random() * 50) + 25));
+                } catch (InterruptedException e) {
+                    log.info("Sleep failed in lucid combat: {}", e.toString());
+                }
+
+                Prayers.toggleQuickPrayer(true);
+
                 isFlicking = true;
                 return true;
             }
-            else if (Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && isFlicking)
+            else if (!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && isFlicking)
             {
-                Prayers.toggleQuickPrayer(false);
-                try {
-                    Thread.sleep((long)((Math.random() * 100) + 50));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
                 Prayers.toggleQuickPrayer(true);
                 return true;
             }
