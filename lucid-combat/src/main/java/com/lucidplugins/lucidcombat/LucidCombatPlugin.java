@@ -95,6 +95,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private boolean isSpeccing = false;
 
+    private boolean isFlicking = false;
+
     @Getter
     private Actor lastTarget = null;
 
@@ -368,9 +370,11 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             return;
         }
 
-        if(Prayers.isQuickPrayerEnabled())
+        if (config.enablePrayerFlick() && Prayers.isQuickPrayerEnabled() && isFlicking)
         {
             Prayers.toggleQuickPrayer(false);
+            isFlicking = false;
+            return;
         }
 
 
@@ -509,7 +513,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private boolean handleAutoSpec()
     {
-        if (!config.enableAutoSpec() || config.specWeapon().isEmpty() || !Inventory.contains(config.specWeapon(), config.mainWeapon()))
+        if (!config.enableAutoSpec() || config.specWeapon().isEmpty() || config.mainWeapon().isEmpty())
         {
             return false;
         }
@@ -547,7 +551,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 }
             }
 
-            equippedItem = false;
+            if (!EquipmentUtils.contains(config.specWeapon()))
+                equippedItem = false;
             return true;
         }
 
@@ -907,22 +912,26 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 nextReactionTick = client.getTickCount() + getReaction();
         if(config.enablePrayerFlick() && !isSpeccing)
         {
-            if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
+            if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && !isFlicking)
+            {
                 Prayers.toggleQuickPrayer(true);
-            else if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
+                isFlicking = true;
+                return true;
+            }
+            else if (Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && isFlicking)
             {
                 Prayers.toggleQuickPrayer(false);
                 try {
                     Thread.sleep((long)((Math.random() * 100) + 50));
                 } catch (InterruptedException e) {
-                    log.info("Sleep failed in lucid combat: {}", e.toString());
+                    e.printStackTrace();
                 }
 
-                if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0) {
-                    Prayers.toggleQuickPrayer(true);
-                }
+                Prayers.toggleQuickPrayer(true);
 
             }
+
+
 
             /*try {
                 Thread.sleep((long)((Math.random() * 100) + 50));
