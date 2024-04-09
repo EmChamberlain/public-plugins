@@ -95,7 +95,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private boolean isSpeccing = false;
 
-    private boolean isFlicking = false;
+    private int lastFlickTick = 0;
 
     @Getter
     private Actor lastTarget = null;
@@ -370,7 +370,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             return;
         }
 
-        if (config.enablePrayerFlick() && Prayers.isQuickPrayerEnabled() && isFlicking)
+        if (config.enablePrayerFlick() && Prayers.isQuickPrayerEnabled())
         {
             Prayers.toggleQuickPrayer(false);
         }
@@ -910,7 +910,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 nextReactionTick = client.getTickCount() + getReaction();
         if(config.enablePrayerFlick() && !isSpeccing)
         {
-            if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && !isFlicking)
+            if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && ((client.getTickCount() - lastFlickTick) > 1))
             {
                 Prayers.toggleQuickPrayer(true);
 
@@ -930,19 +930,19 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
                 Prayers.toggleQuickPrayer(true);
 
-                isFlicking = true;
+                lastFlickTick = client.getTickCount();
                 return true;
             }
-            else if (!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && isFlicking)
+            else if (!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0 && ((client.getTickCount() - lastFlickTick) == 1))
             {
                 Prayers.toggleQuickPrayer(true);
+                lastFlickTick = client.getTickCount();
                 return true;
             }
             else
             {
                 if (Prayers.isQuickPrayerEnabled())
                     Prayers.toggleQuickPrayer(false);
-                isFlicking = false;
                 return true;
             }
 
