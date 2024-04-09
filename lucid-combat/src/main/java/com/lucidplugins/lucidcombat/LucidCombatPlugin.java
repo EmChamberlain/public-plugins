@@ -4,6 +4,8 @@ import com.google.inject.Provides;
 import com.lucidplugins.lucidcombat.api.item.SlottedItem;
 import com.lucidplugins.lucidcombat.api.util.*;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
@@ -33,7 +35,7 @@ import java.util.function.Predicate;
 
 import net.unethicalite.api.widgets.Prayers;
 
-
+@Slf4j
 @Extension
 @PluginDescriptor(name = "Lucid Combat", description = "Helps with Combat related stuff", enabledByDefault = false)
 public class LucidCombatPlugin extends Plugin implements KeyListener
@@ -364,6 +366,11 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         {
             secondaryStatus = "Idle for > 2 min";
             return;
+        }
+
+        if(Prayers.isQuickPrayerEnabled())
+        {
+            Prayers.toggleQuickPrayer(false);
         }
 
 
@@ -902,8 +909,22 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         {
             if(!Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
                 Prayers.toggleQuickPrayer(true);
+            else if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0)
+            {
+                Prayers.toggleQuickPrayer(false);
+                try {
+                    Thread.sleep((long)((Math.random() * 100) + 50));
+                } catch (InterruptedException e) {
+                    log.info("Sleep failed in lucid combat: {}", e.toString());
+                }
 
-            try {
+                if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0) {
+                    Prayers.toggleQuickPrayer(true);
+                }
+
+            }
+
+            /*try {
                 Thread.sleep((long)((Math.random() * 100) + 50));
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -911,7 +932,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
             if(Prayers.isQuickPrayerEnabled() && Prayers.getPoints() > 0) {
                 Prayers.toggleQuickPrayer(false);
-            }
+            }*/
         }
 
         return true;

@@ -1,4 +1,4 @@
-version = "1.1.13"
+version = "1.1.14"
 
 project.extra["PluginName"] = "Lucid Combat"
 project.extra["PluginDescription"] = "Helps with Combat related stuff"
