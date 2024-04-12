@@ -1807,6 +1807,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         final Item combatPot = getLowestDosePotion("Combat potion");
         final Item superCombatPot = getLowestDosePotion("Super combat potion");
         final Item divineCombatPot = getLowestDosePotion("Divine super combat potion");
+        final Item overloadPot = getLowestDosePotion("Overload");
 
         if (combatPot != null)
         {
@@ -1819,6 +1820,10 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         else if (divineCombatPot != null && client.getBoostedSkillLevel(Skill.HITPOINTS) > 10)
         {
             itemToUse = divineCombatPot;
+        }
+        else if (overloadPot != null && client.getBoostedSkillLevel(Skill.HITPOINTS) > 50)
+        {
+            itemToUse = overloadPot;
         }
 
         return itemToUse;
