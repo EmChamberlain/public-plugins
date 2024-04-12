@@ -10,6 +10,8 @@ import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.*;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -22,9 +24,11 @@ import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.game.Combat;
 import net.unethicalite.api.items.Bank;
 import net.unethicalite.api.items.GrandExchange;
 import net.unethicalite.api.items.Inventory;
+import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.managers.InventoryManager;
 import org.pf4j.Extension;
 
@@ -588,7 +592,12 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
         if (equippedItem && isSpeccing && !CombatUtils.isSpecEnabled())
         {
-            CombatUtils.toggleSpec();
+            //CombatUtils.toggleSpec();
+            Widget widget = Widgets.get(WidgetInfo.MINIMAP_SPEC_ORB);
+            if (widget == null || !widget.hasAction("Use")) {
+                return false;
+            }
+            widget.interact("Use");
             return true;
         }
 
