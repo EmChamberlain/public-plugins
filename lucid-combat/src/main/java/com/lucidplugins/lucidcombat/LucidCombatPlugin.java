@@ -128,6 +128,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private boolean taskEnded = false;
 
+    private boolean needToOpenInventory = false;
+
     private List<NPC> npcsKilled = new ArrayList<>();
 
     private final List<String> prayerRestoreNames = List.of("Prayer potion", "Super restore", "Sanfew serum", "Blighted super restore", "Moonlight potion");
@@ -850,6 +852,21 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             return false;
         }
 
+        if(needToOpenInventory)
+        {
+            needToOpenInventory = false;
+            Widget inventoryWidget = Widgets.get(WidgetInfo.RESIZABLE_VIEWPORT_INVENTORY_TAB);
+            if (inventoryWidget != null)
+            {
+                log.info("Attempting to re-open inventory.");
+                inventoryWidget.interact(0);
+            }
+            else
+            {
+                log.info("Inventory widget is null, skipping re-opening inventory");
+            }
+        }
+
         if (config.useSafespot() && !startLocation.equals(client.getLocalPlayer().getWorldLocation()) && !isMoving())
         {
             InteractionUtils.walk(startLocation);
@@ -872,16 +889,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         {
             if (handleAlching())
             {
-                Widget inventoryWidget = Widgets.get(WidgetInfo.RESIZABLE_VIEWPORT_INVENTORY_TAB);
-                if (inventoryWidget != null)
-                {
-                    log.info("Attempting to re-open inventory.");
-                    inventoryWidget.interact(0);
-                }
-                else
-                {
-                    log.info("Inventory widget is null, skipping re-opening inventory");
-                }
+                needToOpenInventory = true;
                 return false;
             }
         }
