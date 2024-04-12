@@ -852,21 +852,6 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             return false;
         }
 
-        if(needToOpenInventory)
-        {
-            needToOpenInventory = false;
-            Widget inventoryWidget = Widgets.get(WidgetInfo.RESIZABLE_VIEWPORT_INVENTORY_TAB);
-            if (inventoryWidget != null)
-            {
-                log.info("Attempting to re-open inventory.");
-                inventoryWidget.interact(0);
-            }
-            else
-            {
-                log.info("Inventory widget is null, skipping re-opening inventory");
-            }
-        }
-
         if (config.useSafespot() && !startLocation.equals(client.getLocalPlayer().getWorldLocation()) && !isMoving())
         {
             InteractionUtils.walk(startLocation);
@@ -995,7 +980,23 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             }*/
         }
 
-        return true;
+        if(needToOpenInventory)
+        {
+            needToOpenInventory = false;
+            Widget inventoryWidget = Widgets.get(WidgetInfo.RESIZABLE_VIEWPORT_INVENTORY_TAB);
+            if (inventoryWidget != null)
+            {
+                log.info("Attempting to re-open inventory.");
+                inventoryWidget.interact(0);
+                return true;
+            }
+            else
+            {
+                log.info("Inventory widget is null, skipping re-opening inventory");
+            }
+        }
+
+        return false;
     }
 
     private boolean handleAlching()
