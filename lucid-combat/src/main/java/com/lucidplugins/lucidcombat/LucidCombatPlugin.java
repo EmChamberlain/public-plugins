@@ -28,6 +28,7 @@ import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.game.Combat;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.items.Bank;
+import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.GrandExchange;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.packets.MousePackets;
@@ -603,14 +604,9 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             }
         }
 
-        if (equippedItem && isSpeccing && !CombatUtils.isSpecEnabled())
+        if (equippedItem && isSpeccing && !CombatUtils.isSpecEnabled() && Equipment.contains(x -> x.getName().contains(config.specWeapon())))
         {
-            //CombatUtils.toggleSpec();
-            Widget widget = Widgets.get(WidgetInfo.MINIMAP_SPEC_ORB);
-            if (widget == null || !widget.hasAction("Use")) {
-                return false;
-            }
-            invokeAction(widget.getMenu("Use"), widget.getOriginalX(), widget.getOriginalY());
+            CombatUtils.toggleSpec();
             return true;
         }
 
