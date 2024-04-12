@@ -872,6 +872,16 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         {
             if (handleAlching())
             {
+                Widget inventoryWidget = Widgets.get(WidgetInfo.RESIZABLE_VIEWPORT_INVENTORY_TAB);
+                if (inventoryWidget != null)
+                {
+                    log.info("Attempting to re-open inventory.");
+                    inventoryWidget.interact(0);
+                }
+                else
+                {
+                    log.info("Inventory widget is null, skipping re-opening inventory");
+                }
                 return false;
             }
         }
