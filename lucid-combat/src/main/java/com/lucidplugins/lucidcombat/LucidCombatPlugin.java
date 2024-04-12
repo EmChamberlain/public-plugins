@@ -24,10 +24,13 @@ import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.game.Combat;
+import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.items.Bank;
 import net.unethicalite.api.items.GrandExchange;
 import net.unethicalite.api.items.Inventory;
+import net.unethicalite.api.packets.MousePackets;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.managers.InventoryManager;
 import org.pf4j.Extension;
@@ -513,6 +516,16 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private static boolean equippedItem = false;
 
+    private void invokeAction(MenuAutomated entry, int x, int y)
+    {
+        GameThread.invoke(() ->
+        {
+            MousePackets.queueClickPacket(x, y);
+            client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
+                    entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y);
+        });
+    }
+
     private boolean handleAutoSpec()
     {
         if (!config.enableAutoSpec() || config.specWeapon().isEmpty() || config.mainWeapon().isEmpty())
@@ -597,7 +610,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             if (widget == null || !widget.hasAction("Use")) {
                 return false;
             }
-            widget.interact("Use");
+            invokeAction(widget.getMenu("Use"), widget.getOriginalX(), widget.getOriginalY());
             return true;
         }
 
