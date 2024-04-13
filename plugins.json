@@ -206,6 +206,13 @@
       "version": "1.1.26",
       "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-combat-1.1.26.jar?raw=true",
       "requires": "^1.0.0"
+    },
+    {
+      "date": "2024-04-12",
+      "sha512sum": "DB1BE44E6AA6A9C72FCA3AE99A560510A4F58B68D5DB05F25902B2A802222C5B2BD2A36F71DE8131EB4B2B918FD92354D8ABEBEF38EE3DA742FAE6B2D52A9F51",
+      "version": "1.1.27",
+      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-combat-1.1.27.jar?raw=true",
+      "requires": "^1.0.0"
     }
   ]
 }, {
@@ -216,7 +223,7 @@
   "id": "lucidcustomprayers-plugin",
   "releases": [{
     "date": "2024-04-02",
-    "sha512sum": "87FDDE332F216B43B02371B7D137A9CAE050BA0B53FD17F774DFB9B1B7A3A0AC6548908D34A1C1FD39C81058CACFD3CFB4872E0B2B0A4B3A7D0C3AC0B74CD7DD",
+    "sha512sum": "1E9609ABA25EEF0908FDD57453BF32C43223A2579CE1410D3074A46F8A6570E1D4D022FFA61DB389A94FABE5AE3272910D0A103A9D8424D3CD87BF38CF0211BA",
     "version": "2.1.9",
     "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.1.9.jar?raw=true",
     "requires": "^1.0.0"

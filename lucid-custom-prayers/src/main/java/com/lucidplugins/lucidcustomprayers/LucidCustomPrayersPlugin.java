@@ -291,36 +291,36 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
 
         getEquipmentChanges();
 
-        if (oneTickFlicking)
-        {
-            if (CombatUtils.isQuickPrayersEnabled(client))
-            {
-                CombatUtils.toggleQuickPrayers(client);
-                CombatUtils.toggleQuickPrayers(client);
-            }
-            else
-            {
-                CombatUtils.toggleQuickPrayers(client);
-            }
-        }
-        else
-        {
-            if (disableQuickPrayers && CombatUtils.isQuickPrayersEnabled(client))
-            {
-                CombatUtils.toggleQuickPrayers(client);
-                disableQuickPrayers = false;
-            }
-        }
-
-        for (ScheduledPrayer prayer : scheduledPrayers)
-        {
-            if (client.getTickCount() == prayer.getActivationTick())
-            {
-                activatePrayer(client, prayer.getPrayer(), prayer.isToggle());
-            }
-        }
-
-        scheduledPrayers.removeIf(prayer -> prayer.getActivationTick() <= client.getTickCount() - 1);
+//        if (oneTickFlicking)
+//        {
+//            if (CombatUtils.isQuickPrayersEnabled(client))
+//            {
+//                CombatUtils.toggleQuickPrayers(client);
+//                CombatUtils.toggleQuickPrayers(client);
+//            }
+//            else
+//            {
+//                CombatUtils.toggleQuickPrayers(client);
+//            }
+//        }
+//        else
+//        {
+//            if (disableQuickPrayers && CombatUtils.isQuickPrayersEnabled(client))
+//            {
+//                CombatUtils.toggleQuickPrayers(client);
+//                disableQuickPrayers = false;
+//            }
+//        }
+//
+//        for (ScheduledPrayer prayer : scheduledPrayers)
+//        {
+//            if (client.getTickCount() == prayer.getActivationTick())
+//            {
+//                activatePrayer(client, prayer.getPrayer(), prayer.isToggle());
+//            }
+//        }
+//
+//        scheduledPrayers.removeIf(prayer -> prayer.getActivationTick() <= client.getTickCount() - 1);
 
         animationsThisTick.clear();
         npcsSpawnedThisTick.clear();
