@@ -291,36 +291,15 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
 
         getEquipmentChanges();
 
-//        if (oneTickFlicking)
-//        {
-//            if (CombatUtils.isQuickPrayersEnabled(client))
-//            {
-//                CombatUtils.toggleQuickPrayers(client);
-//                CombatUtils.toggleQuickPrayers(client);
-//            }
-//            else
-//            {
-//                CombatUtils.toggleQuickPrayers(client);
-//            }
-//        }
-//        else
-//        {
-//            if (disableQuickPrayers && CombatUtils.isQuickPrayersEnabled(client))
-//            {
-//                CombatUtils.toggleQuickPrayers(client);
-//                disableQuickPrayers = false;
-//            }
-//        }
-//
-//        for (ScheduledPrayer prayer : scheduledPrayers)
-//        {
-//            if (client.getTickCount() == prayer.getActivationTick())
-//            {
-//                activatePrayer(client, prayer.getPrayer(), prayer.isToggle());
-//            }
-//        }
-//
-//        scheduledPrayers.removeIf(prayer -> prayer.getActivationTick() <= client.getTickCount() - 1);
+        for (ScheduledPrayer prayer : scheduledPrayers)
+        {
+            if (client.getTickCount() == prayer.getActivationTick())
+            {
+                activatePrayer(client, prayer.getPrayer(), prayer.isToggle());
+            }
+        }
+
+        scheduledPrayers.removeIf(prayer -> prayer.getActivationTick() <= client.getTickCount() - 1);
 
         animationsThisTick.clear();
         npcsSpawnedThisTick.clear();
@@ -575,59 +554,13 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
 
     private static void activatePrayer(Client client, Prayer prayer, boolean toggle)
     {
-        boolean useQuickPrayers = false;
-
-        if (prayer == Prayer.THICK_SKIN)
-        {
-            useQuickPrayers = true;
-        }
-
-        if (prayer == Prayer.BURST_OF_STRENGTH)
-        {
-            if (toggle)
-            {
-                oneTickFlicking = !oneTickFlicking;
-                if (!oneTickFlicking)
-                {
-                    disableQuickPrayers = true;
-                }
-            }
-            else
-            {
-                oneTickFlicking = true;
-            }
-            return;
-        }
-
-        if (prayer == Prayer.CLARITY_OF_THOUGHT)
-        {
-            oneTickFlicking = false;
-            disableQuickPrayers = true;
-            return;
-        }
-
         if (toggle)
         {
-            if (useQuickPrayers)
-            {
-                CombatUtils.toggleQuickPrayers(client);
-            }
-            else
-            {
-                CombatUtils.togglePrayer(client, prayer);
-            }
-
+            CombatUtils.toggleQuickPrayer(client, prayer);
         }
         else
         {
-            if (useQuickPrayers)
-            {
-                CombatUtils.activateQuickPrayers(client);
-            }
-            else
-            {
-                CombatUtils.activatePrayer(client, prayer);
-            }
+            CombatUtils.togglePrayer(client, prayer);
         }
     }
 
