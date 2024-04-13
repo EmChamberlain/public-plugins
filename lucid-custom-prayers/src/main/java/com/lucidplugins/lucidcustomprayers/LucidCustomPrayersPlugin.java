@@ -321,7 +321,7 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
         {
             if (client.getTickCount() == prayer.getActivationTick())
             {
-                MessageUtils.addMessage(client, "Lucid Prayer: Handling prayer | " + prayer.getPrayer().name());
+                //MessageUtils.addMessage(client, "Lucid Prayer: Handling prayer | " + prayer.getPrayer().name());
                 activatePrayer(client, prayer.getPrayer(), prayer.isToggle());
             }
         }

@@ -51,37 +51,37 @@ public class CombatUtils
         Widget container = client.getWidget(ComponentID.QUICK_PRAYER_PRAYERS);
         if (container == null)
         {
-            MessageUtils.addMessage(client, "Lucid Prayer: Couldn't get widget container, attempting to open one time");
+            //MessageUtils.addMessage(client, "Lucid Prayer: Couldn't get widget container, attempting to open one time");
             Widget quickPrayerOrb = client.getWidget(WidgetInfo.MINIMAP_QUICK_PRAYER_ORB);
             if (quickPrayerOrb != null)
             {
-                MessageUtils.addMessage(client, "Lucid Prayer: Attempting a setup re-open");
+                //MessageUtils.addMessage(client, "Lucid Prayer: Attempting a setup re-open");
                 invokeAction(client, quickPrayerOrb.getMenu("Setup"), quickPrayerOrb.getCanvasLocation().getX(), quickPrayerOrb.getCanvasLocation().getY());
             }
         }
         if (container == null)
         {
-            MessageUtils.addMessage(client, "Lucid Prayer: Still couldn't get widget container");
+            //MessageUtils.addMessage(client, "Lucid Prayer: Still couldn't get widget container");
             return;
         }
         Widget[] quickPrayerWidgets = container.getDynamicChildren();
-        MessageUtils.addMessage(client, "Lucid Prayer: Widget container size | " + quickPrayerWidgets.length);
+        //MessageUtils.addMessage(client, "Lucid Prayer: Widget container size | " + quickPrayerWidgets.length);
         for (Widget prayerWidget : quickPrayerWidgets)
         {
             String adjustedPrayerName = prayer.name().toLowerCase().replace('_', ' ').strip();
             String adjustedWidgetName = prayerWidget.getName().toLowerCase().strip();
             if (!prayerWidget.hasAction("Toggle"))
             {
-                MessageUtils.addMessage(client,"Lucid Prayer: No toggle | " + adjustedPrayerName + " | " + adjustedWidgetName);
+                //MessageUtils.addMessage(client,"Lucid Prayer: No toggle | " + adjustedPrayerName + " | " + adjustedWidgetName);
                 continue;
             }
             if (!adjustedWidgetName.contains(adjustedPrayerName))
             {
-                MessageUtils.addMessage(client,"Lucid Prayer: Not a match | " + adjustedPrayerName + " | " + adjustedWidgetName);
+                //MessageUtils.addMessage(client,"Lucid Prayer: Not a match | " + adjustedPrayerName + " | " + adjustedWidgetName);
                 continue;
             }
 
-            MessageUtils.addMessage(client,"Lucid Prayer: Attempting to toggle | " + adjustedPrayerName + " | " + adjustedWidgetName);
+            //MessageUtils.addMessage(client,"Lucid Prayer: Attempting to toggle | " + adjustedPrayerName + " | " + adjustedWidgetName);
             invokeAction(client, prayerWidget.getMenu("Toggle"), prayerWidget.getCanvasLocation().getX(), prayerWidget.getCanvasLocation().getY());
         }
     }
@@ -92,7 +92,7 @@ public class CombatUtils
             return;
         if (client.getBoostedSkillLevel(Skill.PRAYER) == 0)
         {
-            MessageUtils.addMessage(client, "Lucid Prayer: Out of prayer points");
+            //MessageUtils.addMessage(client, "Lucid Prayer: Out of prayer points");
             return;
         }
 
