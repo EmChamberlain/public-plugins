@@ -56,11 +56,20 @@ public class CombatUtils
         MessageUtils.addMessage(client, "Lucid Prayer: Widget container size | " + quickPrayerWidgets.length);
         for (Widget prayerWidget : quickPrayerWidgets)
         {
+            String adjustedPrayerName = prayer.name().toLowerCase().replace('_', ' ').strip();
+            String adjustedWidgetName = prayerWidget.getName().toLowerCase().strip();
             if (!prayerWidget.hasAction("Toggle"))
+            {
+                MessageUtils.addMessage(client,"Lucid Prayer: No toggle | " + adjustedPrayerName + " | " + adjustedWidgetName);
                 continue;
-            if (!prayerWidget.getName().toLowerCase().contains(prayer.name().toLowerCase()))
+            }
+            if (!adjustedWidgetName.contains(adjustedPrayerName))
+            {
+                MessageUtils.addMessage(client,"Lucid Prayer: Not a match | " + adjustedPrayerName + " | " + adjustedWidgetName);
                 continue;
-            MessageUtils.addMessage(client,"Lucid Prayer: Attempting to toggle | " + prayer.name());
+            }
+
+            MessageUtils.addMessage(client,"Lucid Prayer: Attempting to toggle | " + adjustedPrayerName + " | " + adjustedWidgetName);
             invokeAction(client, prayerWidget.getMenu("Toggle"), prayerWidget.getCanvasLocation().getX(), prayerWidget.getCanvasLocation().getY());
         }
     }
