@@ -6,6 +6,8 @@ import net.runelite.api.Skill;
 import net.runelite.api.Varbits;
 import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetID;
+import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.packets.MousePackets;
@@ -49,7 +51,17 @@ public class CombatUtils
         Widget container = client.getWidget(ComponentID.QUICK_PRAYER_PRAYERS);
         if (container == null)
         {
-            MessageUtils.addMessage(client, "Lucid Prayer: Couldn't get widget container");
+            MessageUtils.addMessage(client, "Lucid Prayer: Couldn't get widget container, attempting to open one time");
+            Widget quickPrayerOrb = client.getWidget(WidgetInfo.MINIMAP_QUICK_PRAYER_ORB);
+            if (quickPrayerOrb != null)
+            {
+                MessageUtils.addMessage(client, "Lucid Prayer: Attempting a setup re-open");
+                invokeAction(client, quickPrayerOrb.getMenu("Setup"), quickPrayerOrb.getCanvasLocation().getX(), quickPrayerOrb.getCanvasLocation().getY());
+            }
+        }
+        if (container == null)
+        {
+            MessageUtils.addMessage(client, "Lucid Prayer: Still couldn't get widget container");
             return;
         }
         Widget[] quickPrayerWidgets = container.getDynamicChildren();
