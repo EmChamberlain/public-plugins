@@ -10,6 +10,7 @@ import com.lucidplugins.lucidcustomprayers.api.util.EquipmentUtils;
 import com.lucidplugins.lucidcustomprayers.api.util.MessageUtils;
 import net.runelite.api.*;
 import net.runelite.api.events.*;
+import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.callback.ClientThread;
@@ -20,6 +21,9 @@ import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.unethicalite.api.events.MenuAutomated;
+import net.unethicalite.api.game.GameThread;
+import net.unethicalite.api.packets.MousePackets;
 import org.pf4j.Extension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -285,9 +289,31 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
         parsePrayers();
     }
 
+    private static void invokeAction(Client client, MenuAutomated entry, int x, int y)
+    {
+        GameThread.invoke(() ->
+        {
+            MousePackets.queueClickPacket(x, y);
+            client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
+                    entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y);
+        });
+    }
+
     @Subscribe
     private void onGameTick(final GameTick event)
     {
+
+        Widget quickPrayerContainer = client.getWidget(ComponentID.QUICK_PRAYER_PRAYERS);
+        if (quickPrayerContainer == null)
+        {
+            MessageUtils.addMessage(client, "Lucid Prayer: Couldn't get widget container, attempting to open");
+            Widget quickPrayerOrb = client.getWidget(WidgetInfo.MINIMAP_QUICK_PRAYER_ORB);
+            if (quickPrayerOrb != null)
+            {
+                MessageUtils.addMessage(client, "Lucid Prayer: Attempting a setup open");
+                invokeAction(client, quickPrayerOrb.getMenu("Setup"), quickPrayerOrb.getCanvasLocation().getX(), quickPrayerOrb.getCanvasLocation().getY());
+            }
+        }
 
         getEquipmentChanges();
 
