@@ -221,13 +221,22 @@
   "name": "Lucid Custom Prayers",
   "description": "Set up auto prayers based on various event IDs",
   "id": "lucidcustomprayers-plugin",
-  "releases": [{
-    "date": "2024-04-02",
-    "sha512sum": "1E9609ABA25EEF0908FDD57453BF32C43223A2579CE1410D3074A46F8A6570E1D4D022FFA61DB389A94FABE5AE3272910D0A103A9D8424D3CD87BF38CF0211BA",
-    "version": "2.1.9",
-    "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.1.9.jar?raw=true",
-    "requires": "^1.0.0"
-  }]
+  "releases": [
+    {
+      "date": "2024-04-02",
+      "sha512sum": "1E9609ABA25EEF0908FDD57453BF32C43223A2579CE1410D3074A46F8A6570E1D4D022FFA61DB389A94FABE5AE3272910D0A103A9D8424D3CD87BF38CF0211BA",
+      "version": "2.1.9",
+      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.1.9.jar?raw=true",
+      "requires": "^1.0.0"
+    },
+    {
+      "date": "2024-04-13",
+      "sha512sum": "310C83087ABD8A34459D4376E12951463CC54182584F1E754ABF56AC9DFD5A9A907DB33B0AE5F735C5E24F3F310DDCF8E650D7743F37B0785C7EFA1C5250EDC5",
+      "version": "2.2.1",
+      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.2.1.jar?raw=true",
+      "requires": "^1.0.0"
+    }
+  ]
 }, {
   "projectUrl": "https://discord.gg/lucid-plugs",
   "provider": "EmChamberlain",
