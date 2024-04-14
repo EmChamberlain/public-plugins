@@ -4,10 +4,7 @@ import net.runelite.api.Client;
 import net.runelite.api.Prayer;
 import net.runelite.api.Skill;
 import net.runelite.api.Varbits;
-import net.runelite.api.widgets.ComponentID;
-import net.runelite.api.widgets.Widget;
 import net.unethicalite.api.widgets.Prayers;
-import net.unethicalite.api.widgets.Widgets;
 
 public class CombatUtils
 {
@@ -31,33 +28,14 @@ public class CombatUtils
         Prayers.toggle(prayer);
     }
 
-    public static void toggleQuickPrayerByCheckbox(Client client, Prayer prayer)
+    public static void toggleQuickPrayers(Client client)
     {
-        Widget container = client.getWidget(ComponentID.QUICK_PRAYER_PRAYERS);
-        if (container == null)
-        {
-            System.out.println("Lucid Prayer: Couldn't get widget container");
-            return;
-        }
-        Widget[] quickPrayerWidgets = container.getDynamicChildren();
-        for (Widget prayerWidget : quickPrayerWidgets)
-        {
-            if (!prayerWidget.hasAction("Toggle"))
-                continue;
-            if (!prayerWidget.getName().toLowerCase().contains(prayer.name().toLowerCase()))
-                continue;
-            prayerWidget.interact("Toggle");
-        }
-    }
-
-    public static void toggleQuickPrayer(Client client, Prayer prayer)
-    {
-        if (client == null || (client.getBoostedSkillLevel(Skill.PRAYER) == 0 || !client.isPrayerActive(prayer)))
+        if (client == null || (client.getBoostedSkillLevel(Skill.PRAYER) == 0 && !Prayers.isQuickPrayerEnabled()))
         {
             return;
         }
 
-        toggleQuickPrayerByCheckbox(client, prayer);
+        Prayers.toggleQuickPrayer(!Prayers.isQuickPrayerEnabled());
     }
 
     public static void activateQuickPrayers(Client client)
