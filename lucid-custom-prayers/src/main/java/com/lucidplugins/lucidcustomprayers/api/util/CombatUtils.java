@@ -53,7 +53,6 @@ public class CombatUtils
             return;
         }
         Widget[] quickPrayerWidgets = container.getDynamicChildren();
-        MessageUtils.addMessage(client, "Lucid Prayer: Widget container size | " + quickPrayerWidgets.length);
         for (Widget prayerWidget : quickPrayerWidgets)
         {
             if (!prayerWidget.hasAction("Toggle"))
