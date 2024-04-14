@@ -242,13 +242,6 @@
       "version": "2.1.11",
       "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.1.11.jar?raw=true",
       "requires": "^1.0.0"
-    },
-    {
-      "date": "2024-04-13",
-      "sha512sum": "341A7B66F0277502630D5D8E9F65F3A81BF1EDCF7CF09A05A968506E196FCE10DF74027F6B2D8C416FFCD95DA8C2210B708A8EC66B6BF7DF65F2160C4B288843",
-      "version": "2.1.12",
-      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.1.12.jar?raw=true",
-      "requires": "^1.0.0"
     }
   ]
 }, {

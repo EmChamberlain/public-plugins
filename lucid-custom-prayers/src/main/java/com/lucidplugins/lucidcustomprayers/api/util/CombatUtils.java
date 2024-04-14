@@ -49,7 +49,7 @@ public class CombatUtils
         Widget container = client.getWidget(ComponentID.QUICK_PRAYER_PRAYERS);
         if (container == null)
         {
-            MessageUtils.addMessage(client, "Lucid Prayer: Couldn't get widget container");
+            System.out.println("Lucid Prayer: Couldn't get widget container");
             return;
         }
         Widget[] quickPrayerWidgets = container.getDynamicChildren();
@@ -59,18 +59,15 @@ public class CombatUtils
                 continue;
             if (!prayerWidget.getName().toLowerCase().contains(prayer.name().toLowerCase()))
                 continue;
-            MessageUtils.addMessage(client,"Lucid Prayer: Attempting to toggle | " + prayer.name());
+            System.out.println("Lucid Prayer: Attempting to toggle | " + prayer.name());
             invokeAction(client, prayerWidget.getMenu("Toggle"), prayerWidget.getCanvasLocation().getX(), prayerWidget.getCanvasLocation().getY());
         }
     }
 
     public static void toggleQuickPrayer(Client client, Prayer prayer)
     {
-        if (client == null)
-            return;
-        if (client.getBoostedSkillLevel(Skill.PRAYER) == 0)
+        if (client == null || (client.getBoostedSkillLevel(Skill.PRAYER) == 0 || !client.isPrayerActive(prayer)))
         {
-            MessageUtils.addMessage(client, "Lucid Prayer: Out of prayer points");
             return;
         }
 
