@@ -312,12 +312,44 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
             }
         }
 
+        boolean activatedPrayer = false;
         for (ScheduledPrayer prayer : scheduledPrayers)
         {
             if (client.getTickCount() == prayer.getActivationTick())
             {
                 activatePrayer(client, prayer.getPrayer(), prayer.isToggle());
+                activatedPrayer = true;
             }
+        }
+        Prayer prayerToFlick = null;
+        if (!activatedPrayer)
+        {
+            for (Prayer prayer : Prayer.values())
+            {
+                if(client.isPrayerActive(prayer))
+                {
+                    if (prayerToFlick != null)
+                    {
+                        prayerToFlick = null;
+                        break;
+                    }
+                    else
+                    {
+                        prayerToFlick = prayer;
+                    }
+                }
+            }
+        }
+
+        if (prayerToFlick != null)
+        {
+            activatePrayer(client, prayerToFlick, true);
+            try {
+                Thread.sleep((long)((Math.random() * 10) + 5));
+            } catch (InterruptedException e) {
+                log.info("Sleep failed in lucid prayer flicker: {}", e.toString());
+            }
+            activatePrayer(client, prayerToFlick, true);
         }
 
         scheduledPrayers.removeIf(prayer -> prayer.getActivationTick() <= client.getTickCount() - 1);
