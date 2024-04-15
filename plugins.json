@@ -209,7 +209,7 @@
     },
     {
       "date": "2024-04-12",
-      "sha512sum": "DB1BE44E6AA6A9C72FCA3AE99A560510A4F58B68D5DB05F25902B2A802222C5B2BD2A36F71DE8131EB4B2B918FD92354D8ABEBEF38EE3DA742FAE6B2D52A9F51",
+      "sha512sum": "EF02995BFB18739CB2A094C6641EC60B5F69958449B28C3D9B8028E6460320DB3C7B8CC598D57CBC30569EBDEEF44FFDA58EB53851C6CD657988A1F4729B106A",
       "version": "1.1.27",
       "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-combat-1.1.27.jar?raw=true",
       "requires": "^1.0.0"
@@ -241,6 +241,13 @@
       "sha512sum": "4E9FA4F3060C0AB20D1B4957B4D14AD3C155D9DF874DE0BA9D345C07F904EE76CCECE7B9EDEF0F01F780FAA787A3996F25CA9FE43772E07440ADB38F3079CFBE",
       "version": "2.2.2",
       "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.2.2.jar?raw=true",
+      "requires": "^1.0.0"
+    },
+    {
+      "date": "2024-04-15",
+      "sha512sum": "8B6963C83F6FA9F03BF1D66B3C9565D2A33D4B1A142639CBB7E4AC20366AD10DBFC32097D4061F6CBEC967A1BCAF1FD828F4E039CFF8DE0153E332CFD55C4EE4",
+      "version": "2.2.3",
+      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-custom-prayers-2.2.3.jar?raw=true",
       "requires": "^1.0.0"
     }
   ]
