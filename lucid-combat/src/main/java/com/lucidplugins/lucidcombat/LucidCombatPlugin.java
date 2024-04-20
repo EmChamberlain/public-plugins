@@ -666,7 +666,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             });
         }
 
-        if (InventoryUtils.getFreeSlots() == 0)
+        if (InventoryUtils.getFreeSlots() == 0 && !config.eatToLoot())
         {
             lootableItems.removeIf(loot -> !isStackable(loot.getId()) || (isStackable(loot.getId()) && InventoryUtils.count(loot.getId()) == 0));
         }
@@ -675,6 +675,17 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
         if (config.enableLooting() && nearest != null)
         {
+            if (config.eatToLoot() && InventoryUtils.getFreeSlots() == 0 && (!isStackable(nearest.getId()) || (isStackable(nearest.getId()) && InventoryUtils.count(nearest.getId()) == 0)))
+            {
+                Item itemToEat = Inventory.getFirst(x -> x.hasAction("Eat"));
+                if (itemToEat == null)
+                {
+                    log.info("Lucid combat no item to eat for making more space so not");
+                    return false;
+                }
+                itemToEat.interact("Eat");
+                return true;
+            }
             if (client.getLocalPlayer().getInteracting() != null)
             {
                 lastTarget = client.getLocalPlayer().getInteracting();

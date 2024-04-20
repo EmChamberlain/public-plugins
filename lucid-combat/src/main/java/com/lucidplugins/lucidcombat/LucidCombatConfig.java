@@ -144,6 +144,12 @@ public interface LucidCombatConfig extends Config
         return 0;
     }
 
+    @ConfigItem(name = "Eat to Loot", description = "Whether to eat food to make space for loot or not", position = 11, keyName = "eatToLoot", section = lootSection)
+    default boolean eatToLoot()
+    {
+        return true;
+    }
+
     // Slayer Settings
     @ConfigSection(name = "Slayer Settings", description = "Control settings for slayer features", position = 2, closedByDefault = true)
     String slayerSection = "Slayer Settings";
