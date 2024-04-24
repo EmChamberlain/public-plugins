@@ -1426,6 +1426,11 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         if (config.enabledByConfig())
         {
             configManager.setConfiguration("lucid-combat", "enabledByConfig", false);
+            lastTickActive = client.getTickCount();
+            lastAlchTick = client.getTickCount();
+            expectedLootLocations.clear();
+            npcsKilled.clear();
+            startLocation = client.getLocalPlayer().getWorldLocation();
             autoCombatRunning = true;
         }
     }
