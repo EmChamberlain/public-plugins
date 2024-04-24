@@ -75,6 +75,12 @@ public interface LucidCombatConfig extends Config
         return false;
     }
 
+    @ConfigItem(name = "enabledByConfig", description = "enabledByConfig", position = 10, keyName = "enabledByConfig", section = autoCombatSection)
+    default boolean enabledByConfig()
+    {
+        return false;
+    }
+
     @ConfigSection(name = "Loot Settings", description = "Control loot settings for auto-combat", position = 1, closedByDefault = true)
     String lootSection = "Loot Settings";
 

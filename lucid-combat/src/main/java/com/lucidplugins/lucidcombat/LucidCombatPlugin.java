@@ -1422,6 +1422,12 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         {
             nextPrayerLevelToRestoreAt = Math.max(1, config.prayerPointsMin() + (config.prayerRestoreBuffer() > 0 ? random.nextInt(config.prayerRestoreBuffer() + 1) : 0));
         }
+
+        if (config.enabledByConfig())
+        {
+            configManager.setConfiguration("lucid-combat", "enabledByConfig", false);
+            autoCombatRunning = true;
+        }
     }
 
     private boolean restorePrimaries()
