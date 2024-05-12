@@ -1280,7 +1280,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             Arrays.asList(npc.getComposition().getActions()).contains("Attack") &&
             InteractionUtils.isWalkable(npc.getWorldLocation()) &&
             InteractionUtils.distanceTo2DHypotenuse(npc.getWorldLocation(), startLocation) <= config.maxRange() &&
-            npc.getHealthRatio() != 0
+            !npc.isDead()
         );
     }
 
@@ -1298,7 +1298,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
         return (npc.getName() != null && isNameInNpcsToFight(npc.getName())) &&
 
-                (((npc.getInteracting() == client.getLocalPlayer() && npc.getHealthRatio() != 0)) ||
+                (((npc.getInteracting() == client.getLocalPlayer() && !npc.isDead())) ||
                 (npc.getInteracting() == null && noPlayerFightingNpc(npc)) ||
                 (npc.getInteracting() instanceof NPC && noPlayerFightingNpc(npc))) &&
 
