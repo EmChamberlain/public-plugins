@@ -1523,12 +1523,27 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             }
         }
 
-        if (config.stopIfNoFood() && config.enableHpRestore() && needToRestoreHp() && !ateFood && !brewed && !karambwanned)
+        if (config.enableHpRestore() && needToRestoreHp() && !ateFood && !brewed && !karambwanned)
         {
-            if (autoCombatRunning)
+            if (config.stopIfNoFood() && autoCombatRunning)
             {
-                secondaryStatus = "Ran out of food";
+                secondaryStatus = "Ran out of food, stopped combat";
                 autoCombatRunning = false;
+            }
+            if (config.teleTabIfNoFood())
+            {
+                Item teleTab = Inventory.getFirst(x -> x.hasAction("Break"));
+                if (teleTab == null)
+                {
+                    log.info("No tele tab found!");
+                    secondaryStatus = "Ran out of food, tele tab failed";
+                }
+                else
+                {
+                    secondaryStatus = "Ran out of food, tele tab failed";
+                    teleTab.interact("Break");
+                    log.info("Tried to tele tab!");
+                }
             }
         }
 
