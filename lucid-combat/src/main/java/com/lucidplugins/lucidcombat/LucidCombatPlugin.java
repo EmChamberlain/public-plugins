@@ -1530,8 +1530,9 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 secondaryStatus = "Ran out of food, stopped combat";
                 autoCombatRunning = false;
             }
-            if (config.teleTabIfNoFood())
+            if (config.teleTabIfNoFood() && autoCombatRunning)
             {
+                autoCombatRunning = false;
                 Item teleTab = Inventory.getFirst(x -> x.hasAction("Break"));
                 if (teleTab == null)
                 {
