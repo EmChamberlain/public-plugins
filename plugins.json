@@ -290,6 +290,13 @@
       "version": "1.2.11",
       "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-combat-1.2.11.jar?raw=true",
       "requires": "^1.0.0"
+    },
+    {
+      "date": "2024-05-21",
+      "sha512sum": "B781082A458DEB1FE690AEDF1CE805619F8CBFFECCD0B5F259AB21BA71E073239DC4A7D55ECC021469CD054DFAF5F6261FDECDA3D2BB74C5F6712632EDFA6156",
+      "version": "1.2.12",
+      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-combat-1.2.12.jar?raw=true",
+      "requires": "^1.0.0"
     }
   ]
 }, {
