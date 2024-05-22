@@ -1554,12 +1554,16 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         if (config.equipBracelets())
         {
             var inventoryBracelet = Inventory.getFirst(x -> x.getId() == ItemID.BRACELET_OF_SLAUGHTER || x.getId() == ItemID.EXPEDITIOUS_BRACELET);
-            var equippedBracelet = Equipment.getFirst(x -> x.getId() == ItemID.BRACELET_OF_SLAUGHTER || x.getId() == ItemID.EXPEDITIOUS_BRACELET);
-
-            if (equippedBracelet == null)
+            if (inventoryBracelet != null)
             {
-                inventoryBracelet.interact("Equip");
+                var equippedBracelet = Equipment.getFirst(x -> x.getId() == ItemID.BRACELET_OF_SLAUGHTER || x.getId() == ItemID.EXPEDITIOUS_BRACELET);
+
+                if (equippedBracelet == null)
+                {
+                    inventoryBracelet.interact("Equip");
+                }
             }
+
         }
 
 
