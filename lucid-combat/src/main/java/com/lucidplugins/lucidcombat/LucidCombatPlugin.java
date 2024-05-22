@@ -23,6 +23,7 @@ import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.plugins.itemcharges.ItemChargeConfig;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.game.Combat;
@@ -1549,6 +1550,13 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 }
             }
         }
+
+        if (config.equipBracelets())
+        {
+            var equippedBracelet = Equipment.getFirst(x -> x.getId() == ItemID.BRACELET_OF_SLAUGHTER || x.getId() == ItemID.EXPEDITIOUS_BRACELET);
+            log.info("{}", configManager.getRSProfileConfiguration(ItemChargeConfig.GROUP, ItemChargeConfig.KEY_BRACELET_OF_SLAUGHTER));
+        }
+
 
         if (ateFood)
         {

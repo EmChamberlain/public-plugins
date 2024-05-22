@@ -202,6 +202,11 @@ public interface LucidCombatConfig extends Config
         return 10;
     }
 
+    @ConfigItem(name = "Equip Bracelets", description = "Automatically equips new bracelets when the old one dies", position = 6, keyName = "equipBracelets", section = slayerSection)
+    default boolean equipBracelets()
+    {
+        return false;
+    }
 
     // Prayer upkeep
     @ConfigSection(name = "Prayer Upkeep", description = "Control settings for prayer upkeep", position = 3, closedByDefault = true)
