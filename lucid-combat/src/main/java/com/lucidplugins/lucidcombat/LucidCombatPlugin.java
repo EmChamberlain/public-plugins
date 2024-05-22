@@ -1560,7 +1560,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
                 if (equippedBracelet == null)
                 {
-                    inventoryBracelet.interact("Equip");
+                    if (inventoryBracelet.hasAction("Equip"))
+                        inventoryBracelet.interact("Equip");
                 }
             }
 
