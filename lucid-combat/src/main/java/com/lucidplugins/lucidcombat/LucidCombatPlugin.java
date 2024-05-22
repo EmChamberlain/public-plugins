@@ -1525,12 +1525,14 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
         if (config.enableHpRestore() && needToRestoreHp() && !ateFood && !brewed && !karambwanned)
         {
-            if (config.stopIfNoFood() && autoCombatRunning)
+            int eatCount = Inventory.getCount(x -> x.hasAction("Eat"));
+
+            if (config.stopIfNoFood() && autoCombatRunning && eatCount == 0)
             {
                 secondaryStatus = "Ran out of food, stopped combat";
                 autoCombatRunning = false;
             }
-            if (config.teleTabIfNoFood() && autoCombatRunning)
+            if (config.teleTabIfNoFood() && autoCombatRunning && eatCount == 0)
             {
                 autoCombatRunning = false;
                 Item teleTab = Inventory.getFirst(x -> x.hasAction("Break"));
