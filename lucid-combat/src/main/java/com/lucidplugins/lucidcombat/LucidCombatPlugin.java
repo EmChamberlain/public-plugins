@@ -1544,7 +1544,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                 }
                 else
                 {
-                    secondaryStatus = "Ran out of food, tele tab failed";
+                    secondaryStatus = "Ran out of food, tried to break tele tab";
                     teleTab.interact("Break");
                     log.info("Tried to tele tab!");
                 }
