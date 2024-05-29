@@ -1572,7 +1572,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             }
             else
             {
-                log.info("No inventory bracelet");
+                //log.info("No inventory bracelet");
             }
 
         }
