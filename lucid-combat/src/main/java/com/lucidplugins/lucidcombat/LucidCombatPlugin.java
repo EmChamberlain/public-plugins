@@ -127,6 +127,8 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private int lastAlchTick = 0;
 
+    private int teleTabCountAfterTeleport = -1;
+
     private boolean taskEnded = false;
 
     private boolean needToOpenInventory = false;
@@ -1535,18 +1537,37 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             }
             if (config.teleTabIfNoFood() && autoCombatRunning && eatCount == 0)
             {
-                autoCombatRunning = false;
                 Item teleTab = Inventory.getFirst(x -> x.hasAction("Break"));
                 if (teleTab == null)
                 {
+                    teleTabCountAfterTeleport = -1;
                     log.info("No tele tab found!");
-                    secondaryStatus = "Ran out of food, tele tab failed";
+                    secondaryStatus = "Ran out of food, no tele tab";
+                    autoCombatRunning = false;
                 }
                 else
                 {
-                    secondaryStatus = "Ran out of food, tried to break tele tab";
-                    teleTab.interact("Break");
-                    log.info("Tried to tele tab!");
+                    int newCount = Inventory.getCount(true, teleTab.getId());
+                    if (teleTabCountAfterTeleport < 0)
+                    {
+                        teleTabCountAfterTeleport = newCount - 1;
+                        secondaryStatus = "Ran out of food, tried to break tele tab";
+                        teleTab.interact("Break");
+                        log.info("Tried to tele tab!");
+                    }
+                    else if (teleTabCountAfterTeleport < newCount)
+                    {
+                        secondaryStatus = "Ran out of food, successfully broke tele tab";
+                        teleTabCountAfterTeleport = -1;
+                        autoCombatRunning = false;
+                        log.info("Reset auto tele tab");
+                    }
+                    else
+                    {
+                        secondaryStatus = "Ran out of food, tried to break tele tab";
+                        teleTab.interact("Break");
+                        log.info("Tried to tele tab!");
+                    }
                 }
             }
         }
