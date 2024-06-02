@@ -644,6 +644,11 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
             forcedLootTick = client.getTickCount();
         }
 
+        if (forcedLootTick > client.getTickCount() + config.maxTicksBetweenLooting())
+        {
+            forcedLootTick = client.getTickCount() + config.maxTicksBetweenLooting();
+        }
+
         if (config.onlyLootWithNoTarget())
         {
             if (validInteractingTarget() && forcedLootTick > client.getTickCount())
@@ -867,6 +872,12 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
     {
         if (!autoCombatRunning)
         {
+            return false;
+        }
+
+        if (!config.enablePrayerFlick() && config.enableQuickPrayer() && !Prayers.isQuickPrayerEnabled())
+        {
+            Prayers.toggleQuickPrayer(true);
             return false;
         }
 
