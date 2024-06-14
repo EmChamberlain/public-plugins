@@ -217,7 +217,7 @@ public interface LucidCombatConfig extends Config
     {
         return false;
     }
-    @ConfigItem(name = "Enable Prayer Flicking", description = "Enables auto prayer flicking.", position = 1, keyName = "enablePrayerRestore", section = prayerUpkeepSection)
+    @ConfigItem(name = "Enable Prayer Flicking", description = "Enables auto prayer flicking.", position = 1, keyName = "enablePrayerFlick", section = prayerUpkeepSection)
     default boolean enablePrayerFlick()
     {
         return false;
