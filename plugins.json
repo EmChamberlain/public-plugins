@@ -515,13 +515,22 @@
   "name": "Lucid Muspah",
   "description": "Helper plugin for the Phantom Muspah",
   "id": "lucidmuspah-plugin",
-  "releases": [{
-    "date": "2024-04-02",
-    "sha512sum": "F2AD3551B91AF275A19B8809CB752CC8667A1D1964C24F98FBA6F55027F1846347FE344E2B7CE6FD9915AEDBDA26F3F5B8EF628C8796E36B313CE6A48EC53CE3",
-    "version": "1.0.5",
-    "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-muspah-1.0.5.jar?raw=true",
-    "requires": "^1.0.0"
-  }]
+  "releases": [
+    {
+      "date": "2024-04-02",
+      "sha512sum": "F2AD3551B91AF275A19B8809CB752CC8667A1D1964C24F98FBA6F55027F1846347FE344E2B7CE6FD9915AEDBDA26F3F5B8EF628C8796E36B313CE6A48EC53CE3",
+      "version": "1.0.5",
+      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-muspah-1.0.5.jar?raw=true",
+      "requires": "^1.0.0"
+    },
+    {
+      "date": "2024-06-13",
+      "sha512sum": "8C2055284EE65D77F88E0CA6CF2A6FB663F0C48422A83FFCBF523CD1E6F21B108FD5A7B41AD944AF61BD4727FD398D10EAACAF8C36CF6E8D46B8B8E772BA2C52",
+      "version": "1.0.6",
+      "url": "https://github.com/EmChamberlain/public-plugins/blob/master/release/lucid-muspah-1.0.6.jar?raw=true",
+      "requires": "^1.0.0"
+    }
+  ]
 }, {
   "projectUrl": "https://discord.gg/lucid-plugs",
   "provider": "EmChamberlain",
