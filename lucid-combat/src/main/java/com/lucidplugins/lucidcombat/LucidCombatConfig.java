@@ -51,37 +51,43 @@ public interface LucidCombatConfig extends Config
         return 5;
     }
 
-    @ConfigItem(name = "Anti-Lure Protection", description = "Will loot not loot any items outside of the max range + 3", position = 7, keyName = "antilureProtection", section = autoCombatSection)
+    @ConfigItem(name = "Anti-Lure Protection", description = "Will loot not loot any items outside of the max range + range", position = 7, keyName = "antilureProtection", section = autoCombatSection)
     default boolean antilureProtection()
     {
         return false;
     }
 
-    @ConfigItem(name = "Auto-Combat Play-Style", description = "The plugin will imitate a certain type of playstyle to suit your needs. Normal by default.", position = 8, keyName = "autocombatStyle", section = autoCombatSection)
+    @ConfigItem(name = "Anti-Lure Protection range", description = "Will loot not loot any items outside of the max range + 3", position = 8, keyName = "antilureProtectionRange", section = autoCombatSection)
+    default int antilureProtectionRange()
+    {
+        return 3;
+    }
+
+    @ConfigItem(name = "Auto-Combat Play-Style", description = "The plugin will imitate a certain type of playstyle to suit your needs. Normal by default.", position = 9, keyName = "autocombatStyle", section = autoCombatSection)
     default PlayStyle autocombatStyle()
     {
         return PlayStyle.NORMAL;
     }
 
-    @ConfigItem(name = "Reaction Anti-Pattern", description = "The plugin will make random micro-adjustments to reaction times over time in an attempt to create anti-patterns. Will make the reaction times change over time.", position = 9, keyName = "reactionAntiPattern", section = autoCombatSection)
+    @ConfigItem(name = "Reaction Anti-Pattern", description = "The plugin will make random micro-adjustments to reaction times over time in an attempt to create anti-patterns. Will make the reaction times change over time.", position = 10, keyName = "reactionAntiPattern", section = autoCombatSection)
     default boolean reactionAntiPattern()
     {
         return false;
     }
 
-    @ConfigItem(name = "Use Safepot", description = "Uses the starting tile as your safespot and will return to it if not looting", position = 9, keyName = "useSafespot", section = autoCombatSection)
+    @ConfigItem(name = "Use Safepot", description = "Uses the starting tile as your safespot and will return to it if not looting", position = 11, keyName = "useSafespot", section = autoCombatSection)
     default boolean useSafespot()
     {
         return false;
     }
 
-    @ConfigItem(name = "enabledByConfig", description = "enabledByConfig", position = 10, keyName = "enabledByConfig", section = autoCombatSection)
+    @ConfigItem(name = "enabledByConfig", description = "enabledByConfig", position = 12, keyName = "enabledByConfig", section = autoCombatSection)
     default boolean enabledByConfig()
     {
         return false;
     }
 
-    @ConfigItem(name = "disabledByConfig", description = "disabledByConfig", position = 11, keyName = "disabledByConfig", section = autoCombatSection)
+    @ConfigItem(name = "disabledByConfig", description = "disabledByConfig", position = 13, keyName = "disabledByConfig", section = autoCombatSection)
     default boolean disabledByConfig()
     {
         return false;
