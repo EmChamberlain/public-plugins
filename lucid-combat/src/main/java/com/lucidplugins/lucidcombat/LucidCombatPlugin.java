@@ -1565,7 +1565,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                         teleTab.interact("Break");
                         log.info("Tried to tele tab!");
                     }
-                    else if (teleTabCountAfterTeleport < newCount)
+                    else if (teleTabCountAfterTeleport >= newCount)
                     {
                         secondaryStatus = "Ran out of food, successfully broke tele tab";
                         teleTabCountAfterTeleport = -1;
