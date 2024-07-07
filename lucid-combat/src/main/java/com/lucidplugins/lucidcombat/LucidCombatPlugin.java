@@ -2002,12 +2002,20 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
     {
         for (int i = 1; i < 5; i++)
         {
-            final String fullName = "Super restore(" + i + ")";
+
+            String fullName = "Tears of elidinis(" + i + ")";
 
             if (config.foodBlacklist().contains(fullName))
             {
-                continue;
+                fullName = "Super restore(" + i + ")";
+
+                if (config.foodBlacklist().contains(fullName))
+                {
+                    continue;
+                }
             }
+
+
 
             final Item b = InventoryUtils.getFirstItem(fullName);
             if (b != null)
