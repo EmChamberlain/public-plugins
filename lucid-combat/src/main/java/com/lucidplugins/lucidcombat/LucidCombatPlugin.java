@@ -137,7 +137,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
 
     private List<NPC> npcsKilled = new ArrayList<>();
 
-    private final List<String> prayerRestoreNames = List.of("Prayer potion", "Super restore", "Sanfew serum", "Blighted super restore", "Moonlight potion");
+    private final List<String> prayerRestoreNames = List.of("Tears of elidinis", "Blessed crystal scarab", "Prayer potion", "Super restore", "Sanfew serum", "Blighted super restore", "Moonlight potion");
 
     private final Predicate<SlottedItem> foodFilterNoBlacklistItems = (item) -> {
         final ItemComposition itemComposition = client.getItemDefinition(item.getItem().getId());
@@ -1485,10 +1485,12 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                     eatingToMaxHp = true;
                 }
 
-                final Item saraBrew = getLowestDosePotion("Saradomin brew");
-                if (saraBrew != null)
+                Item tickHealPotion = getLowestDosePotion("Nectar");
+                if (tickHealPotion == null)
+                    tickHealPotion = getLowestDosePotion("Saradomin brew");
+                if (tickHealPotion != null)
                 {
-                    InventoryUtils.itemInteract(saraBrew.getId(), "Drink");
+                    InventoryUtils.itemInteract(tickHealPotion.getId(), "Drink");
                     brewed = true;
                 }
             }
