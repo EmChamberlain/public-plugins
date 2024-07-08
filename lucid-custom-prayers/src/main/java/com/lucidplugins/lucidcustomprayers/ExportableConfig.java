@@ -29,13 +29,13 @@ public class ExportableConfig
 
     public ExportableConfig()
     {
-        this.prayerEnabled = new boolean[10];
-        this.prayerIds = new String[10];
-        this.prayerDelays = new String[10];
-        this.prayChoice = new Prayer[10];
-        this.eventType = new EventType[10];
-        this.toggle = new boolean[10];
-        this.ignoreNonTargetEvents = new boolean[10];
+        this.prayerEnabled = new boolean[20];
+        this.prayerIds = new String[20];
+        this.prayerDelays = new String[20];
+        this.prayChoice = new Prayer[20];
+        this.eventType = new EventType[20];
+        this.toggle = new boolean[20];
+        this.ignoreNonTargetEvents = new boolean[20];
     }
 
     public void setPrayer(int index, final boolean prayerEnabled, final String prayerIds, final String prayerDelays, final Prayer prayChoice,
