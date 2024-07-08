@@ -81,6 +81,118 @@ public interface LucidCustomPrayersConfig extends Config
     )
     String prayer6Section = "Custom Prayer 6";
 
+    @ConfigSection(
+            name = "Custom Prayer 7",
+            description = "Custom Prayer 7",
+            position = 9,
+            closedByDefault = true
+    )
+    String prayer7Section = "Custom Prayer 7";
+
+    @ConfigSection(
+            name = "Custom Prayer 8",
+            description = "Custom Prayer 8",
+            position = 10,
+            closedByDefault = true
+    )
+    String prayer8Section = "Custom Prayer 8";
+
+    @ConfigSection(
+            name = "Custom Prayer 9",
+            description = "Custom Prayer 9",
+            position = 11,
+            closedByDefault = true
+    )
+    String prayer9Section = "Custom Prayer 9";
+
+    @ConfigSection(
+            name = "Custom Prayer 10",
+            description = "Custom Prayer 10",
+            position = 12,
+            closedByDefault = true
+    )
+    String prayer10Section = "Custom Prayer 10";
+
+    @ConfigSection(
+            name = "Custom Prayer 11",
+            description = "Custom Prayer 11",
+            position = 13,
+            closedByDefault = true
+    )
+    String prayer11Section = "Custom Prayer 11";
+
+    @ConfigSection(
+            name = "Custom Prayer 12",
+            description = "Custom Prayer 12",
+            position = 14,
+            closedByDefault = true
+    )
+    String prayer12Section = "Custom Prayer 12";
+
+    @ConfigSection(
+            name = "Custom Prayer 13",
+            description = "Custom Prayer 13",
+            position = 15,
+            closedByDefault = true
+    )
+    String prayer13Section = "Custom Prayer 13";
+
+    @ConfigSection(
+            name = "Custom Prayer 14",
+            description = "Custom Prayer 14",
+            position = 16,
+            closedByDefault = true
+    )
+    String prayer14Section = "Custom Prayer 14";
+
+    @ConfigSection(
+            name = "Custom Prayer 15",
+            description = "Custom Prayer 15",
+            position = 17,
+            closedByDefault = true
+    )
+    String prayer15Section = "Custom Prayer 15";
+
+    @ConfigSection(
+            name = "Custom Prayer 16",
+            description = "Custom Prayer 16",
+            position = 18,
+            closedByDefault = true
+    )
+    String prayer16Section = "Custom Prayer 16";
+
+    @ConfigSection(
+            name = "Custom Prayer 17",
+            description = "Custom Prayer 17",
+            position = 19,
+            closedByDefault = true
+    )
+    String prayer17Section = "Custom Prayer 17";
+
+    @ConfigSection(
+            name = "Custom Prayer 18",
+            description = "Custom Prayer 18",
+            position = 20,
+            closedByDefault = true
+    )
+    String prayer18Section = "Custom Prayer 18";
+
+    @ConfigSection(
+            name = "Custom Prayer 19",
+            description = "Custom Prayer 19",
+            position = 21,
+            closedByDefault = true
+    )
+    String prayer19Section = "Custom Prayer 19";
+
+    @ConfigSection(
+            name = "Custom Prayer 20",
+            description = "Custom Prayer 20",
+            position = 22,
+            closedByDefault = true
+    )
+    String prayer20Section = "Custom Prayer 20";
+
     // General Section
 
     @ConfigItem(
@@ -808,16 +920,6 @@ public interface LucidCustomPrayersConfig extends Config
         return false;
     }
 
-    // Prayer 7
-
-    @ConfigSection(
-            name = "Custom Prayer 7",
-            description = "Custom Prayer 7",
-            position = 7,
-            closedByDefault = true
-    )
-    String prayer7Section = "Custom Prayer 7";
-
     @ConfigItem(
             name = "Enable This Preset?",
             description = "Toggle this off if you want to disable this custom prayer from doing anything",
@@ -900,14 +1002,6 @@ public interface LucidCustomPrayersConfig extends Config
     }
 
     // Prayer 8
-
-    @ConfigSection(
-            name = "Custom Prayer 8",
-            description = "Custom Prayer 8",
-            position = 8,
-            closedByDefault = true
-    )
-    String prayer8Section = "Custom Prayer 8";
     @ConfigItem(
             name = "Enable This Preset?",
             description = "Toggle this off if you want to disable this custom prayer from doing anything",
@@ -990,14 +1084,6 @@ public interface LucidCustomPrayersConfig extends Config
     }
 
     // Prayer 9
-
-    @ConfigSection(
-            name = "Custom Prayer 9",
-            description = "Custom Prayer 9",
-            position = 9,
-            closedByDefault = true
-    )
-    String prayer9Section = "Custom Prayer 9";
     @ConfigItem(
             name = "Enable This Preset?",
             description = "Toggle this off if you want to disable this custom prayer from doing anything",
@@ -1081,14 +1167,6 @@ public interface LucidCustomPrayersConfig extends Config
     }
 
     // Prayer 10
-
-    @ConfigSection(
-            name = "Custom Prayer 10",
-            description = "Custom Prayer 10",
-            position = 10,
-            closedByDefault = true
-    )
-    String prayer10Section = "Custom Prayer 10";
     @ConfigItem(
             name = "Enable This Preset?",
             description = "Toggle this off if you want to disable this custom prayer from doing anything",
@@ -1169,4 +1247,839 @@ public interface LucidCustomPrayersConfig extends Config
     {
         return false;
     }
+
+    // Prayer 11
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated11",
+            section = prayer11Section
+    )
+    default boolean activated11()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray11Ids",
+            section = prayer11Section
+    )
+    default String pray11Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray11delays",
+            section = prayer11Section
+    )
+    default String pray11delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray11choice",
+            section = prayer11Section
+    )
+    default Prayer pray11choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType11",
+            section = prayer11Section
+    )
+    default EventType eventType11()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle11",
+            section = prayer11Section
+    )
+    default boolean toggle11()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents11",
+            section = prayer11Section
+    )
+    default boolean ignoreNonTargetEvents11()
+    {
+        return false;
+    }
+
+// Repeat similarly for prayers 12 to 20
+
+    // Prayer 12
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated12",
+            section = prayer12Section
+    )
+    default boolean activated12()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray12Ids",
+            section = prayer12Section
+    )
+    default String pray12Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray12delays",
+            section = prayer12Section
+    )
+    default String pray12delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray12choice",
+            section = prayer12Section
+    )
+    default Prayer pray12choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType12",
+            section = prayer12Section
+    )
+    default EventType eventType12()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle12",
+            section = prayer12Section
+    )
+    default boolean toggle12()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents12",
+            section = prayer12Section
+    )
+    default boolean ignoreNonTargetEvents12()
+    {
+        return false;
+    }
+
+    // Prayer 13
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated13",
+            section = prayer13Section
+    )
+    default boolean activated13()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray13Ids",
+            section = prayer13Section
+    )
+    default String pray13Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray13delays",
+            section = prayer13Section
+    )
+    default String pray13delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray13choice",
+            section = prayer13Section
+    )
+    default Prayer pray13choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType13",
+            section = prayer13Section
+    )
+    default EventType eventType13()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle13",
+            section = prayer13Section
+    )
+    default boolean toggle13()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents13",
+            section = prayer13Section
+    )
+    default boolean ignoreNonTargetEvents13()
+    {
+        return false;
+    }
+
+    // Prayer 14
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated14",
+            section = prayer14Section
+    )
+    default boolean activated14()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray14Ids",
+            section = prayer14Section
+    )
+    default String pray14Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray14delays",
+            section = prayer14Section
+    )
+    default String pray14delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray14choice",
+            section = prayer14Section
+    )
+    default Prayer pray14choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType14",
+            section = prayer14Section
+    )
+    default EventType eventType14()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle14",
+            section = prayer14Section
+    )
+    default boolean toggle14()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents14",
+            section = prayer14Section
+    )
+    default boolean ignoreNonTargetEvents14()
+    {
+        return false;
+    }
+
+    // Prayer 15
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated15",
+            section = prayer15Section
+    )
+    default boolean activated15()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray15Ids",
+            section = prayer15Section
+    )
+    default String pray15Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray15delays",
+            section = prayer15Section
+    )
+    default String pray15delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray15choice",
+            section = prayer15Section
+    )
+    default Prayer pray15choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType15",
+            section = prayer15Section
+    )
+    default EventType eventType15()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle15",
+            section = prayer15Section
+    )
+    default boolean toggle15()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents15",
+            section = prayer15Section
+    )
+    default boolean ignoreNonTargetEvents15()
+    {
+        return false;
+    }
+
+    // Prayer 16
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated16",
+            section = prayer16Section
+    )
+    default boolean activated16()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray16Ids",
+            section = prayer16Section
+    )
+    default String pray16Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray16delays",
+            section = prayer16Section
+    )
+    default String pray16delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray16choice",
+            section = prayer16Section
+    )
+    default Prayer pray16choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType16",
+            section = prayer16Section
+    )
+    default EventType eventType16()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle16",
+            section = prayer16Section
+    )
+    default boolean toggle16()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents16",
+            section = prayer16Section
+    )
+    default boolean ignoreNonTargetEvents16()
+    {
+        return false;
+    }
+
+    // Prayer 17
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated17",
+            section = prayer17Section
+    )
+    default boolean activated17()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray17Ids",
+            section = prayer17Section
+    )
+    default String pray17Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray17delays",
+            section = prayer17Section
+    )
+    default String pray17delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray17choice",
+            section = prayer17Section
+    )
+    default Prayer pray17choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType17",
+            section = prayer17Section
+    )
+    default EventType eventType17()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle17",
+            section = prayer17Section
+    )
+    default boolean toggle17()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents17",
+            section = prayer17Section
+    )
+    default boolean ignoreNonTargetEvents17()
+    {
+        return false;
+    }
+
+    // Prayer 18
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated18",
+            section = prayer18Section
+    )
+    default boolean activated18()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray18Ids",
+            section = prayer18Section
+    )
+    default String pray18Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray18delays",
+            section = prayer18Section
+    )
+    default String pray18delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray18choice",
+            section = prayer18Section
+    )
+    default Prayer pray18choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType18",
+            section = prayer18Section
+    )
+    default EventType eventType18()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle18",
+            section = prayer18Section
+    )
+    default boolean toggle18()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents18",
+            section = prayer18Section
+    )
+    default boolean ignoreNonTargetEvents18()
+    {
+        return false;
+    }
+
+    // Prayer 19
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated19",
+            section = prayer19Section
+    )
+    default boolean activated19()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray19Ids",
+            section = prayer19Section
+    )
+    default String pray19Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray19delays",
+            section = prayer19Section
+    )
+    default String pray19delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray19choice",
+            section = prayer19Section
+    )
+    default Prayer pray19choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType19",
+            section = prayer19Section
+    )
+    default EventType eventType19()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle19",
+            section = prayer19Section
+    )
+    default boolean toggle19()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents19",
+            section = prayer19Section
+    )
+    default boolean ignoreNonTargetEvents19()
+    {
+        return false;
+    }
+
+    // Prayer 20
+    @ConfigItem(
+            name = "Enable This Preset?",
+            description = "Toggle this off if you want to disable this custom prayer from doing anything",
+            position = 0,
+            keyName = "activated20",
+            section = prayer20Section
+    )
+    default boolean activated20()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+            name = "Event IDs",
+            description = "Enter the IDs for the event that will trigger this prayer, separated by commas",
+            position = 1,
+            keyName = "pray20Ids",
+            section = prayer20Section
+    )
+    default String pray20Ids()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Tick delays",
+            description = "How many ticks after the event to activate the prayer, separate multiple values by comma."
+                    + "One delay per ID required or leaving this completely blank will default to instant activation.",
+            position = 2,
+            keyName = "pray20delays",
+            section = prayer20Section
+    )
+    default String pray20delays()
+    {
+        return "";
+    }
+    @ConfigItem(
+            name = "Prayer",
+            description = "Which prayer will be activated?",
+            position = 3,
+            keyName = "pray20choice",
+            section = prayer20Section
+    )
+    default Prayer pray20choice()
+    {
+        return Prayer.PIETY;
+    }
+    @ConfigItem(
+            name = "Event",
+            description = "Type of event these IDs correlate to",
+            position = 4,
+            keyName = "eventType20",
+            section = prayer20Section
+    )
+    default EventType eventType20()
+    {
+        return EventType.ANIMATION_CHANGED;
+    }
+    @ConfigItem(
+            name = "Toggle Prayer?",
+            description = "Having this on will toggle the prayer on/off depending on its current state instead of only activating it.",
+            position = 5,
+            keyName = "toggle20",
+            section = prayer20Section
+    )
+    default boolean toggle20()
+    {
+        return false;
+    }
+
+    @ConfigItem(
+            name = "Ignore non-target NPC events?",
+            description = "Having this on will ignore certain incoming events if you're not being targeted by the NPC performing the action.<br>"
+                    + "Having it disabled will not ignore any events at all.",
+            position = 6,
+            keyName = "ignoreNonTargetEvents20",
+            section = prayer20Section
+    )
+    default boolean ignoreNonTargetEvents20()
+    {
+        return false;
+    }
+
+
+
 }
