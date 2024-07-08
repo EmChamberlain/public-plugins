@@ -397,7 +397,7 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
     {
         eventMap.clear();
 
-        for (int i = 1; i < 11; i++)
+        for (int i = 1; i < 21; i++)
         {
             parsePrayerSlot(i);
         }
@@ -522,6 +522,125 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
                     type = config.eventType10();
                     toggle = config.toggle10();
                     ignoreNonTargetEvent = config.ignoreNonTargetEvents10();
+                }
+                break;
+            case 11:
+                if (config.activated11())
+                {
+                    ids = intListFromString(config.pray11Ids());
+                    delays = intListFromString(config.pray11delays());
+                    prayChoice = config.pray11choice();
+                    type = config.eventType11();
+                    toggle = config.toggle11();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents11();
+                }
+                break;
+
+            case 12:
+                if (config.activated12())
+                {
+                    ids = intListFromString(config.pray12Ids());
+                    delays = intListFromString(config.pray12delays());
+                    prayChoice = config.pray12choice();
+                    type = config.eventType12();
+                    toggle = config.toggle12();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents12();
+                }
+                break;
+
+            case 13:
+                if (config.activated13())
+                {
+                    ids = intListFromString(config.pray13Ids());
+                    delays = intListFromString(config.pray13delays());
+                    prayChoice = config.pray13choice();
+                    type = config.eventType13();
+                    toggle = config.toggle13();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents13();
+                }
+                break;
+
+            case 14:
+                if (config.activated14())
+                {
+                    ids = intListFromString(config.pray14Ids());
+                    delays = intListFromString(config.pray14delays());
+                    prayChoice = config.pray14choice();
+                    type = config.eventType14();
+                    toggle = config.toggle14();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents14();
+                }
+                break;
+
+            case 15:
+                if (config.activated15())
+                {
+                    ids = intListFromString(config.pray15Ids());
+                    delays = intListFromString(config.pray15delays());
+                    prayChoice = config.pray15choice();
+                    type = config.eventType15();
+                    toggle = config.toggle15();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents15();
+                }
+                break;
+
+            case 16:
+                if (config.activated16())
+                {
+                    ids = intListFromString(config.pray16Ids());
+                    delays = intListFromString(config.pray16delays());
+                    prayChoice = config.pray16choice();
+                    type = config.eventType16();
+                    toggle = config.toggle16();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents16();
+                }
+                break;
+
+            case 17:
+                if (config.activated17())
+                {
+                    ids = intListFromString(config.pray17Ids());
+                    delays = intListFromString(config.pray17delays());
+                    prayChoice = config.pray17choice();
+                    type = config.eventType17();
+                    toggle = config.toggle17();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents17();
+                }
+                break;
+
+            case 18:
+                if (config.activated18())
+                {
+                    ids = intListFromString(config.pray18Ids());
+                    delays = intListFromString(config.pray18delays());
+                    prayChoice = config.pray18choice();
+                    type = config.eventType18();
+                    toggle = config.toggle18();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents18();
+                }
+                break;
+
+            case 19:
+                if (config.activated19())
+                {
+                    ids = intListFromString(config.pray19Ids());
+                    delays = intListFromString(config.pray19delays());
+                    prayChoice = config.pray19choice();
+                    type = config.eventType19();
+                    toggle = config.toggle19();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents19();
+                }
+                break;
+
+            case 20:
+                if (config.activated20())
+                {
+                    ids = intListFromString(config.pray20Ids());
+                    delays = intListFromString(config.pray20delays());
+                    prayChoice = config.pray20choice();
+                    type = config.eventType20();
+                    toggle = config.toggle20();
+                    ignoreNonTargetEvent = config.ignoreNonTargetEvents20();
                 }
                 break;
         }
@@ -801,6 +920,17 @@ public class LucidCustomPrayersPlugin extends Plugin implements KeyListener
         exportableConfig.setPrayer(7, config.activated8(), config.pray8Ids(), config.pray8delays(), config.pray8choice(), config.eventType8(), config.toggle8(), config.ignoreNonTargetEvents8());
         exportableConfig.setPrayer(8, config.activated9(), config.pray9Ids(), config.pray9delays(), config.pray9choice(), config.eventType9(), config.toggle9(), config.ignoreNonTargetEvents9());
         exportableConfig.setPrayer(9, config.activated10(), config.pray10Ids(), config.pray10delays(), config.pray10choice(), config.eventType10(), config.toggle10(), config.ignoreNonTargetEvents10());
+        exportableConfig.setPrayer(10, config.activated11(), config.pray11Ids(), config.pray11delays(), config.pray11choice(), config.eventType11(), config.toggle11(), config.ignoreNonTargetEvents11());
+        exportableConfig.setPrayer(11, config.activated12(), config.pray12Ids(), config.pray12delays(), config.pray12choice(), config.eventType12(), config.toggle12(), config.ignoreNonTargetEvents12());
+        exportableConfig.setPrayer(12, config.activated13(), config.pray13Ids(), config.pray13delays(), config.pray13choice(), config.eventType13(), config.toggle13(), config.ignoreNonTargetEvents13());
+        exportableConfig.setPrayer(13, config.activated14(), config.pray14Ids(), config.pray14delays(), config.pray14choice(), config.eventType14(), config.toggle14(), config.ignoreNonTargetEvents14());
+        exportableConfig.setPrayer(14, config.activated15(), config.pray15Ids(), config.pray15delays(), config.pray15choice(), config.eventType15(), config.toggle15(), config.ignoreNonTargetEvents15());
+        exportableConfig.setPrayer(15, config.activated16(), config.pray16Ids(), config.pray16delays(), config.pray16choice(), config.eventType16(), config.toggle16(), config.ignoreNonTargetEvents16());
+        exportableConfig.setPrayer(16, config.activated17(), config.pray17Ids(), config.pray17delays(), config.pray17choice(), config.eventType17(), config.toggle17(), config.ignoreNonTargetEvents17());
+        exportableConfig.setPrayer(17, config.activated18(), config.pray18Ids(), config.pray18delays(), config.pray18choice(), config.eventType18(), config.toggle18(), config.ignoreNonTargetEvents18());
+        exportableConfig.setPrayer(18, config.activated19(), config.pray19Ids(), config.pray19delays(), config.pray19choice(), config.eventType19(), config.toggle19(), config.ignoreNonTargetEvents19());
+        exportableConfig.setPrayer(19, config.activated20(), config.pray20Ids(), config.pray20delays(), config.pray20choice(), config.eventType20(), config.toggle20(), config.ignoreNonTargetEvents20());
+
 
         if (!PRESET_DIR.exists())
         {

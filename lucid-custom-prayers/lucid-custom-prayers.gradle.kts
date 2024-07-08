@@ -1,4 +1,4 @@
-version = "2.2.4"
+version = "2.2.5"
 
 project.extra["PluginName"] = "Lucid Custom Prayers"
 project.extra["PluginDescription"] = "Set up auto prayers based on various event IDs"
