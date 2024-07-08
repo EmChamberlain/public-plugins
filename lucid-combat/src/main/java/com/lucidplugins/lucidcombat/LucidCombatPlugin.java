@@ -1485,7 +1485,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
                     eatingToMaxHp = true;
                 }
 
-                Item tickHealPotion = getLowestDosePotion("Nectar");
+                Item tickHealPotion = getLowestDosePotion("Nectar ");
                 if (tickHealPotion == null)
                     tickHealPotion = getLowestDosePotion("Saradomin brew");
                 if (tickHealPotion != null)
@@ -2003,7 +2003,7 @@ public class LucidCombatPlugin extends Plugin implements KeyListener
         for (int i = 1; i < 5; i++)
         {
 
-            String fullName = "Tears of elidinis(" + i + ")";
+            String fullName = "Tears of elidinis (" + i + ")";
 
             if (config.foodBlacklist().contains(fullName))
             {
